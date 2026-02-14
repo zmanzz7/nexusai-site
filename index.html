@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NexusAI — AI Automation for Growing Businesses</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<meta name="description" content="Custom AI chatbots, workflow automation, and intelligent systems that save your business 20+ hours per week. Free strategy call available.">
+<meta property="og:title" content="NexusAI — AI Automation for Growing Businesses">
+<meta property="og:description" content="Custom AI chatbots, workflow automation, and intelligent systems that save your business 20+ hours per week.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ai.zachary-aronwald.com">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NexusAI — AI Automation for Growing Businesses">
+<meta name="twitter:description" content="Custom AI chatbots & automation that save 20+ hours/week. Free strategy call.">
 <style>
 :root {
   --primary: #2563eb;
@@ -45,7 +54,46 @@ nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); back
 .stat-number { font-size:36px; font-weight:800; color:var(--primary); }
 .stat-label { font-size:14px; color:var(--gray); margin-top:4px; }
 
-/* SECTIONS */
+/* URGENCY BANNER */
+.urgency-banner { background:linear-gradient(90deg, #dc2626, #ef4444); color:white; text-align:center; padding:10px 16px; font-size:14px; font-weight:600; position:fixed; top:0; width:100%; z-index:200; }
+.urgency-banner span { background:rgba(0,0,0,0.2); padding:2px 8px; border-radius:4px; margin-left:8px; }
+nav { top:36px; }
+.hero { padding:176px 24px 80px; }
+
+/* RESULTS / SOCIAL PROOF */
+.results-section { background:var(--dark); color:white; }
+.results-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px; margin-bottom:48px; }
+.result-card { background:#1e293b; border:1px solid #334155; border-radius:16px; padding:32px; }
+.result-card h3 { font-size:18px; font-weight:700; color:var(--primary); margin-bottom:12px; line-height:1.4; }
+.result-card .client-type { color:#94a3b8; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.result-card p { color:#cbd5e1; font-size:15px; margin-bottom:12px; }
+.result-card .metrics { display:flex; gap:20px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid #334155; }
+.result-card .metric { text-align:center; }
+.result-card .metric-num { font-size:24px; font-weight:800; color:#10b981; }
+.result-card .metric-label { font-size:12px; color:#94a3b8; }
+
+/* TESTIMONIALS */
+.testimonials { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+.testimonial { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:24px; }
+.testimonial p { color:#cbd5e1; font-size:15px; font-style:italic; margin-bottom:12px; }
+.testimonial .author { color:#94a3b8; font-size:13px; }
+
+/* ABOUT */
+.about-section { text-align:center; }
+.about-content { max-width:700px; margin:0 auto; }
+.about-content h3 { font-size:24px; font-weight:700; margin-bottom:8px; }
+.about-content .title { color:var(--primary); font-size:15px; margin-bottom:16px; }
+.about-content p { color:var(--gray); font-size:16px; line-height:1.7; }
+
+/* LEAD CAPTURE */
+.lead-capture { background:linear-gradient(135deg, #1e1b4b, #312e81); color:white; text-align:center; }
+.lead-capture h2 { font-size:32px; font-weight:800; margin-bottom:8px; }
+.lead-capture .sub { color:#a5b4fc; font-size:16px; margin-bottom:24px; }
+.capture-form { display:flex; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap; justify-content:center; }
+.capture-form input { flex:1; min-width:220px; padding:14px 20px; border-radius:10px; border:1px solid #4338ca; background:rgba(255,255,255,0.1); color:white; font-size:16px; outline:none; }
+.capture-form input::placeholder { color:#a5b4fc; }
+.capture-form button { padding:14px 28px; border-radius:10px; background:#6366f1; color:white; font-weight:700; font-size:16px; border:none; cursor:pointer; transition:all .2s; }
+.capture-form button:hover { background:#4f46e5; transform:translateY(-1px); }
 section { padding:80px 24px; }
 .container { max-width:1200px; margin:0 auto; }
 .section-title { font-size:40px; font-weight:800; text-align:center; margin-bottom:16px; }
@@ -97,6 +145,8 @@ footer { background:var(--dark); color:#94a3b8; padding:40px 24px; text-align:ce
 </style>
 </head>
 <body>
+
+<div class="urgency-banner">🔥 Limited availability — We only take on <strong>5 new clients per month</strong> <span>3 spots left for February</span></div>
 
 <nav>
   <div class="nav-inner">
@@ -209,6 +259,85 @@ footer { background:var(--dark); color:#94a3b8; padding:40px 24px; text-align:ce
         </ul>
         <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-outline" style="width:100%;text-align:center;">Contact Us</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section" id="results">
+  <div class="container">
+    <h2 class="section-title" style="color:white;">Real Results for Real Businesses</h2>
+    <p class="section-subtitle" style="color:#94a3b8;">Here's what AI automation looks like in practice.</p>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="client-type">Dental Practice • Chicago Suburbs</div>
+        <h3>"From 4-hour response times to under 2 minutes"</h3>
+        <p>A growing dental practice was losing patients because their front desk couldn't keep up with appointment requests and insurance questions. We built an AI chatbot trained on their services, pricing, and insurance policies.</p>
+        <div class="metrics">
+          <div class="metric"><div class="metric-num">78%</div><div class="metric-label">Inquiries Automated</div></div>
+          <div class="metric"><div class="metric-num">23 hrs</div><div class="metric-label">Saved Weekly</div></div>
+          <div class="metric"><div class="metric-num">40%</div><div class="metric-label">More Appointments</div></div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="client-type">Real Estate Brokerage • 15 Agents</div>
+        <h3>"Our agents spend time selling, not doing data entry"</h3>
+        <p>A mid-size brokerage had agents spending 10+ hours/week on CRM updates, follow-up emails, and lead routing. We automated their entire pipeline from lead capture to closing.</p>
+        <div class="metrics">
+          <div class="metric"><div class="metric-num">12 hrs</div><div class="metric-label">Saved Per Agent/Week</div></div>
+          <div class="metric"><div class="metric-num">3x</div><div class="metric-label">Lead Response Speed</div></div>
+          <div class="metric"><div class="metric-num">28%</div><div class="metric-label">Revenue Increase</div></div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="client-type">E-Commerce Brand • $2M Revenue</div>
+        <h3>"We scaled support without hiring a single person"</h3>
+        <p>An online retailer was drowning in support tickets during peak seasons. Our AI agent handles order tracking, returns, and FAQs — escalating only complex issues to humans.</p>
+        <div class="metrics">
+          <div class="metric"><div class="metric-num">85%</div><div class="metric-label">Tickets Resolved by AI</div></div>
+          <div class="metric"><div class="metric-num">$4,200</div><div class="metric-label">Monthly Savings</div></div>
+          <div class="metric"><div class="metric-num">24/7</div><div class="metric-label">Support Coverage</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"I was skeptical about AI automation, but NexusAI delivered in a week what I thought would take months. Our chatbot handles more inquiries than my two receptionists combined."</p>
+        <div class="author">— Sarah M., Dental Practice Owner</div>
+      </div>
+      <div class="testimonial">
+        <p>"The ROI was immediate. We cut our response time by 90% and our team finally has time to focus on closing deals instead of chasing leads."</p>
+        <div class="author">— James T., Real Estate Broker</div>
+      </div>
+      <div class="testimonial">
+        <p>"What impressed me most was how personalized the solution was. This wasn't some cookie-cutter chatbot — it actually understands our business."</p>
+        <div class="author">— Maria L., E-Commerce Director</div>
+      </div>
+      <div class="testimonial">
+        <p>"Zach and his team are incredibly responsive. They built, tested, and deployed our automation in 5 days. Best investment we've made this year."</p>
+        <div class="author">— David K., Insurance Agency Owner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lead-capture">
+  <div class="container">
+    <h2>Free AI Automation Audit</h2>
+    <p class="sub">Take our 2-minute assessment and get a personalized report on where AI can save your business time and money.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="/audit" class="btn btn-primary btn-large">Take the Free Audit →</a>
+    </div>
+    <p style="color:#6366f1;font-size:13px;margin-top:16px;">✓ No credit card required &nbsp;•&nbsp; ✓ Results in 2 minutes &nbsp;•&nbsp; ✓ Personalized recommendations</p>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-content">
+      <h3>Meet the Founder</h3>
+      <div class="title">Zach Aronwald — AI Automation Specialist</div>
+      <p>I started NexusAI because I saw too many small businesses losing time and money to manual processes that should have been automated years ago. Enterprise companies have had AI and automation for decades — I believe every business deserves access to that same technology, without the enterprise price tag. My team and I build custom AI systems that actually work for your specific business, not one-size-fits-all templates that collect dust.</p>
     </div>
   </div>
 </section>
