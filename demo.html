@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusAI Demo — AI Customer Support Bot</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, sans-serif; background:#0f172a; color:white; min-height:100vh; display:flex; flex-direction:column; align-items:center; }
+.header { text-align:center; padding:40px 20px 20px; }
+.header h1 { font-size:32px; font-weight:800; }
+.header h1 span { color:#2563eb; }
+.header p { color:#94a3b8; margin-top:8px; font-size:16px; }
+.chat-container { width:100%; max-width:600px; margin:20px auto; background:#1e293b; border-radius:16px; overflow:hidden; border:1px solid #334155; flex:1; display:flex; flex-direction:column; max-height:70vh; }
+.chat-messages { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:12px; }
+.message { max-width:80%; padding:12px 16px; border-radius:12px; font-size:15px; line-height:1.5; animation:fadeIn 0.3s; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.bot { background:#2563eb; color:white; align-self:flex-start; border-bottom-left-radius:4px; }
+.user { background:#334155; color:#e2e8f0; align-self:flex-end; border-bottom-right-radius:4px; }
+.typing { align-self:flex-start; background:#2563eb33; color:#94a3b8; font-style:italic; }
+.chat-input { display:flex; padding:16px; border-top:1px solid #334155; gap:8px; }
+.chat-input input { flex:1; background:#0f172a; border:1px solid #334155; border-radius:8px; padding:12px 16px; color:white; font-size:15px; outline:none; }
+.chat-input input:focus { border-color:#2563eb; }
+.chat-input button { background:#2563eb; color:white; border:none; border-radius:8px; padding:12px 20px; font-weight:600; cursor:pointer; font-size:15px; }
+.chat-input button:hover { background:#1d4ed8; }
+.banner { text-align:center; padding:20px; }
+.banner a { color:#2563eb; text-decoration:none; font-weight:600; font-size:15px; }
+.banner a:hover { text-decoration:underline; }
+.suggestions { display:flex; gap:8px; flex-wrap:wrap; padding:0 20px 16px; }
+.suggestion { background:#0f172a; border:1px solid #334155; color:#94a3b8; padding:8px 14px; border-radius:20px; font-size:13px; cursor:pointer; transition:all 0.2s; }
+.suggestion:hover { border-color:#2563eb; color:white; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Nexus<span>AI</span> Demo</h1>
+  <p>See how an AI support bot handles real customer inquiries</p>
+</div>
+
+<div class="chat-container">
+  <div class="chat-messages" id="messages">
+    <div class="message bot">Hi! 👋 I'm the AI support assistant for [Your Business]. How can I help you today?</div>
+  </div>
+  <div class="suggestions" id="suggestions">
+    <div class="suggestion" onclick="sendSuggestion(this)">What are your pricing plans?</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">I need help with my order</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">How do I get started?</div>
+    <div class="suggestion" onclick="sendSuggestion(this)">Can I speak to a human?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="input" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<div class="banner">
+  <p>Want this for your business? <a href="https://calendly.com/zaronwald/ai-automation-strategy-call">Book a free strategy call →</a></p>
+</div>
+
+<script>
+const responses = {
+  'pricing': "Great question! We offer three plans:\n\n📦 **Starter** — $29/mo (up to 500 conversations)\n📦 **Growth** — $79/mo (unlimited conversations + analytics)\n📦 **Enterprise** — Custom pricing\n\nWould you like me to help you pick the right plan?",
+  'order': "I'd be happy to help with your order! Could you share your order number? I can look up the status, process a return, or connect you with our fulfillment team.\n\nCommon issues I can resolve instantly:\n• Order tracking\n• Shipping updates\n• Return/exchange requests",
+  'started': "Getting started is easy! Here's how:\n\n1️⃣ Sign up at our website (takes 2 min)\n2️⃣ Choose your plan\n3️⃣ Complete the onboarding wizard\n4️⃣ You're live!\n\nNeed help with any of these steps?",
+  'human': "Of course! I'll connect you with a team member right away. 🔄\n\nBefore I transfer you, could you briefly describe your issue? This helps our team resolve it faster.\n\n*Average wait time: under 2 minutes*",
+  'default': "Thanks for your message! I can help with:\n\n• Pricing & plans\n• Order status & returns\n• Getting started\n• Technical support\n• Billing questions\n\nWhat would you like to know more about?"
+};
+
+function getResponse(text) {
+  text = text.toLowerCase();
+  if (text.includes('pric') || text.includes('cost') || text.includes('plan')) return responses.pricing;
+  if (text.includes('order') || text.includes('track') || text.includes('ship') || text.includes('return')) return responses.order;
+  if (text.includes('start') || text.includes('sign up') || text.includes('begin') || text.includes('how do')) return responses.started;
+  if (text.includes('human') || text.includes('person') || text.includes('agent') || text.includes('speak') || text.includes('talk')) return responses.human;
+  return responses.default;
+}
+
+function addMessage(text, type) {
+  const messages = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + type;
+  div.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+function sendSuggestion(el) {
+  document.getElementById('suggestions').style.display = 'none';
+  addMessage(el.textContent, 'user');
+  const typing = addMessage('Thinking...', 'typing');
+  setTimeout(() => {
+    typing.remove();
+    addMessage(getResponse(el.textContent), 'bot');
+  }, 800 + Math.random() * 700);
+}
+
+function sendMessage() {
+  const input = document.getElementById('input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  document.getElementById('suggestions').style.display = 'none';
+  addMessage(text, 'user');
+  const typing = addMessage('Thinking...', 'typing');
+  setTimeout(() => {
+    typing.remove();
+    addMessage(getResponse(text), 'bot');
+  }, 800 + Math.random() * 700);
+}
+</script>
+
+</body>
+</html>
