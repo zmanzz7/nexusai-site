@@ -27,7 +27,7 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; color: var(--dark); line-height: 1.6; }
 
 /* NAV */
-nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #e2e8f0; }
+nav { position:sticky; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #e2e8f0; }
 .nav-inner { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
 .logo { font-size:24px; font-weight:800; color:var(--dark); text-decoration:none; }
 .logo span { color:var(--primary); }
@@ -57,8 +57,7 @@ nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); back
 /* URGENCY BANNER */
 .urgency-banner { background:linear-gradient(90deg, #dc2626, #ef4444); color:white; text-align:center; padding:8px 16px; font-size:13px; font-weight:600; }
 .urgency-banner span { background:rgba(0,0,0,0.2); padding:2px 8px; border-radius:4px; margin-left:8px; }
-nav { top:0 !important; }
-.hero { padding-top:140px !important; }
+.hero { padding-top:80px !important; }
 
 /* RESULTS / SOCIAL PROOF */
 .results-section { background:var(--dark); color:white; }
