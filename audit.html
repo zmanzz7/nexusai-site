@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Automation Audit — NexusAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;line-height:1.6}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.badge{display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);padding:.35rem 1rem;border-radius:99px;font-size:.8rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:.75rem;background:linear-gradient(135deg,#fff,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#94a3b8;font-size:1.05rem;margin-bottom:2.5rem}
+.progress-wrap{position:sticky;top:0;z-index:10;background:#0f172a;padding:1rem 0 .75rem;border-bottom:1px solid #1e293b}
+.progress-bar{height:8px;background:#1e293b;border-radius:99px;overflow:hidden;margin-bottom:.5rem}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#6366f1,#a78bfa);border-radius:99px;transition:width .4s ease}
+.score-label{display:flex;justify-content:space-between;font-size:.85rem;color:#94a3b8}
+.score-num{font-weight:700;color:#a78bfa;font-size:1rem}
+.questions{display:flex;flex-direction:column;gap:.75rem;margin:1.5rem 0 2rem}
+.q-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.15rem 1.25rem;cursor:pointer;transition:all .25s ease;display:flex;align-items:center;gap:1rem;user-select:none}
+.q-card:hover{border-color:#6366f1;transform:translateY(-1px);box-shadow:0 4px 20px rgba(99,102,241,.15)}
+.q-card.checked{border-color:#6366f1;background:#1e293b}
+.checkbox{width:24px;height:24px;min-width:24px;border:2px solid #475569;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .25s ease;font-size:14px}
+.q-card.checked .checkbox{background:#6366f1;border-color:#6366f1}
+.checkbox svg{opacity:0;transition:opacity .2s}
+.q-card.checked .checkbox svg{opacity:1}
+.q-text{font-size:.95rem}
+.q-number{color:#475569;font-weight:700;font-size:.8rem;min-width:1.5rem}
+.result-panel{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:2.5rem 2rem;text-align:center;opacity:0;transform:translateY(20px);transition:all .5s ease;margin-top:1rem}
+.result-panel.visible{opacity:1;transform:translateY(0)}
+.result-score{font-size:4rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.result-msg{font-size:1.15rem;margin:1rem 0 2rem;color:#cbd5e1;line-height:1.5}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:1rem 2.5rem;border-radius:12px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:all .3s;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(99,102,241,.4)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,.5)}
+.secondary-link{display:block;margin-top:1rem;color:#94a3b8;text-decoration:none;font-size:.9rem;transition:color .2s}
+.secondary-link:hover{color:#a78bfa}
+.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 4px 24px rgba(99,102,241,.4)}50%{box-shadow:0 4px 40px rgba(99,102,241,.7)}}
+@media(max-width:600px){h1{font-size:1.6rem}.container{padding:1.5rem 1rem 3rem}.result-score{font-size:3rem}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="badge">Free Audit</div>
+<h1>Free AI Automation Audit — Is Your Business Ready?</h1>
+<p class="subtitle">Check every statement that applies to your business. Your automation score updates in real-time.</p>
+
+<div class="progress-wrap">
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="score-label"><span>Automation Score</span><span class="score-num" id="scoreNum">0%</span></div>
+</div>
+
+<div class="questions" id="questions"></div>
+<div class="result-panel" id="resultPanel">
+<div class="result-score" id="resultScore">0%</div>
+<p class="result-msg" id="resultMsg"></p>
+<a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="cta-btn pulse">Book Your Free Strategy Call →</a>
+<a href="/demo" class="secondary-link">See what we build →</a>
+</div>
+</div>
+
+<script>
+const questions=[
+"Do you spend more than 5 hours/week on customer support emails?",
+"Are you manually entering data between systems?",
+"Do leads wait more than 1 hour for a response?",
+"Is your team creating reports manually?",
+"Do you have repetitive tasks that follow the same pattern every time?",
+"Are you copy-pasting information between tools or spreadsheets?",
+"Does onboarding a new client take more than a day of manual work?",
+"Are you scheduling appointments or follow-ups by hand?",
+"Do you manually qualify or sort incoming leads?",
+"Is your team spending time on data cleanup or formatting?",
+"Are social media posts or emails drafted from scratch each time?",
+"Do you lack real-time visibility into your sales pipeline?",
+"Are invoices, proposals, or contracts created manually?",
+"Does your team answer the same customer questions repeatedly?",
+"Are you still using spreadsheets as your primary workflow tool?"
+];
+const container=document.getElementById('questions');
+const fill=document.getElementById('progressFill');
+const scoreNum=document.getElementById('scoreNum');
+const panel=document.getElementById('resultPanel');
+const resultScore=document.getElementById('resultScore');
+const resultMsg=document.getElementById('resultMsg');
+let checked=new Set();
+
+questions.forEach((q,i)=>{
+const card=document.createElement('div');
+card.className='q-card';
+card.innerHTML=`<span class="q-number">${i+1}</span><div class="checkbox"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 4" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="q-text">${q}</span>`;
+card.onclick=()=>{
+if(checked.has(i))checked.delete(i);else checked.add(i);
+card.classList.toggle('checked');
+update();
+};
+container.appendChild(card);
+});
+
+function update(){
+const pct=Math.round(checked.size/questions.length*100);
+fill.style.width=pct+'%';
+scoreNum.textContent=pct+'%';
+resultScore.textContent=pct+'%';
+if(checked.size>0){
+panel.classList.add('visible');
+if(pct<=30)resultMsg.textContent="You're in good shape! But there's always room to optimize. Let's find those hidden wins.";
+else if(pct<=60)resultMsg.textContent="You have significant automation opportunities. A strategy call could save your team dozens of hours per week.";
+else resultMsg.textContent="Your business is bleeding time and money on manual work. You need AI automation NOW.";
+}else{
+panel.classList.remove('visible');
+}
+}
+</script>
+</body>
+</html>
