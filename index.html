@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusAI — AI Automation for Growing Businesses</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #10b981;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --white: #ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; color: var(--dark); line-height: 1.6; }
+
+/* NAV */
+nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #e2e8f0; }
+.nav-inner { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:24px; font-weight:800; color:var(--dark); text-decoration:none; }
+.logo span { color:var(--primary); }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a { color:var(--gray); text-decoration:none; font-size:15px; font-weight:500; }
+.nav-links a:hover { color:var(--dark); }
+.btn { display:inline-block; padding:10px 24px; border-radius:8px; font-weight:600; text-decoration:none; font-size:15px; transition:all 0.2s; }
+.btn-primary { background:var(--primary); color:white; }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 12px rgba(37,99,235,0.4); }
+.btn-outline { border:2px solid var(--primary); color:var(--primary); }
+.btn-outline:hover { background:var(--primary); color:white; }
+.btn-large { padding:14px 32px; font-size:17px; }
+
+/* HERO */
+.hero { padding:140px 24px 80px; text-align:center; background:linear-gradient(180deg, #f0f5ff 0%, var(--white) 100%); }
+.hero h1 { font-size:56px; font-weight:800; line-height:1.15; max-width:800px; margin:0 auto 24px; }
+.hero h1 span { background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { font-size:20px; color:var(--gray); max-width:600px; margin:0 auto 40px; }
+.hero-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.hero-stats { display:flex; gap:48px; justify-content:center; margin-top:60px; }
+.stat { text-align:center; }
+.stat-number { font-size:36px; font-weight:800; color:var(--primary); }
+.stat-label { font-size:14px; color:var(--gray); margin-top:4px; }
+
+/* SECTIONS */
+section { padding:80px 24px; }
+.container { max-width:1200px; margin:0 auto; }
+.section-title { font-size:40px; font-weight:800; text-align:center; margin-bottom:16px; }
+.section-subtitle { font-size:18px; color:var(--gray); text-align:center; max-width:600px; margin:0 auto 60px; }
+
+/* SERVICES */
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px; }
+.service-card { background:var(--white); border:1px solid #e2e8f0; border-radius:16px; padding:32px; transition:all 0.2s; }
+.service-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.08); }
+.service-icon { width:48px; height:48px; background:linear-gradient(135deg, var(--primary), var(--accent)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px; }
+.service-card h3 { font-size:20px; font-weight:700; margin-bottom:12px; }
+.service-card p { color:var(--gray); font-size:15px; }
+
+/* PRICING */
+.pricing-section { background:var(--light); }
+.pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
+.price-card { background:var(--white); border:1px solid #e2e8f0; border-radius:16px; padding:40px 32px; text-align:center; position:relative; }
+.price-card.featured { border:2px solid var(--primary); transform:scale(1.05); }
+.price-card.featured::before { content:'MOST POPULAR'; position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; padding:4px 16px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:1px; }
+.price-name { font-size:18px; font-weight:600; color:var(--gray); margin-bottom:8px; }
+.price-amount { font-size:48px; font-weight:800; }
+.price-amount span { font-size:18px; color:var(--gray); font-weight:500; }
+.price-desc { color:var(--gray); font-size:14px; margin:12px 0 24px; }
+.price-features { list-style:none; text-align:left; margin-bottom:32px; }
+.price-features li { padding:8px 0; font-size:15px; display:flex; align-items:center; gap:10px; }
+.price-features li::before { content:'✓'; color:var(--accent); font-weight:700; }
+
+/* HOW IT WORKS */
+.steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:40px; }
+.step { text-align:center; }
+.step-number { width:48px; height:48px; border-radius:50%; background:var(--primary); color:white; font-size:20px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
+.step h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
+.step p { color:var(--gray); font-size:15px; }
+
+/* CTA */
+.cta { background:linear-gradient(135deg, var(--dark) 0%, #1e293b 100%); color:white; text-align:center; padding:100px 24px; }
+.cta h2 { font-size:40px; font-weight:800; margin-bottom:16px; }
+.cta p { font-size:18px; color:#94a3b8; margin-bottom:40px; }
+
+/* FOOTER */
+footer { background:var(--dark); color:#94a3b8; padding:40px 24px; text-align:center; font-size:14px; }
+
+@media (max-width:768px) {
+  .hero h1 { font-size:36px; }
+  .hero-stats { flex-direction:column; gap:24px; }
+  .price-card.featured { transform:none; }
+  .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Nexus<span>AI</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#contact" class="btn btn-primary">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Automate Your Business with <span>AI-Powered Systems</span></h1>
+  <p>We build custom AI chatbots, automation workflows, and intelligent systems that save you 20+ hours per week and scale your revenue.</p>
+  <div class="hero-buttons">
+    <a href="#contact" class="btn btn-primary btn-large">Book a Free Strategy Call</a>
+    <a href="#services" class="btn btn-outline btn-large">See What We Build</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Hours Saved Weekly</div></div>
+    <div class="stat"><div class="stat-number">3x</div><div class="stat-label">Faster Response Times</div></div>
+    <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Always-On Automation</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">What We Build</h2>
+    <p class="section-subtitle">Custom AI solutions tailored to your business. No templates, no cookie-cutter — built from scratch for your specific needs.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>AI Customer Support Chatbots</h3>
+        <p>Intelligent chatbots trained on your business data that handle customer inquiries 24/7, qualify leads, and book appointments — all while sounding human.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Workflow Automation</h3>
+        <p>Eliminate repetitive tasks. We automate data entry, email sequences, CRM updates, reporting, and internal processes so your team focuses on what matters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>AI-Powered Lead Generation</h3>
+        <p>Smart systems that find, qualify, and nurture leads on autopilot. From web scraping to personalized outreach sequences powered by AI.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <h3>API & System Integrations</h3>
+        <p>Connect your tools seamlessly. We integrate your CRM, email, Slack, databases, and third-party APIs into one automated ecosystem.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Automated Reporting & Analytics</h3>
+        <p>Real-time dashboards and automated reports delivered to your inbox. Know your numbers without lifting a finger.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Custom AI Agents</h3>
+        <p>Purpose-built AI agents that handle complex business logic — from document processing to intelligent decision-making systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <p class="section-subtitle">No hidden fees. No long-term contracts. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">$497<span>/mo</span></div>
+        <div class="price-desc">Perfect for small businesses getting started with AI</div>
+        <ul class="price-features">
+          <li>1 custom AI chatbot or automation</li>
+          <li>Up to 1,000 interactions/mo</li>
+          <li>Basic analytics dashboard</li>
+          <li>Email support</li>
+          <li>Monthly optimization</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center;">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Growth</div>
+        <div class="price-amount">$997<span>/mo</span></div>
+        <div class="price-desc">For businesses ready to scale with multiple automations</div>
+        <ul class="price-features">
+          <li>Up to 3 automations or chatbots</li>
+          <li>Unlimited interactions</li>
+          <li>Advanced analytics & reporting</li>
+          <li>Priority Slack/email support</li>
+          <li>Weekly optimization & updates</li>
+          <li>CRM & tool integrations</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center;">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise</div>
+        <div class="price-amount">$2,497<span>/mo</span></div>
+        <div class="price-desc">Full-scale AI transformation for your business</div>
+        <ul class="price-features">
+          <li>Unlimited automations & agents</li>
+          <li>Custom AI model fine-tuning</li>
+          <li>Dedicated account manager</li>
+          <li>24/7 priority support</li>
+          <li>Full system architecture</li>
+          <li>White-label options</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center;">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">From idea to automated system in as little as one week.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Free Strategy Call</h3>
+        <p>We learn about your business, identify automation opportunities, and map out your custom solution.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Custom Build</h3>
+        <p>Our team builds your AI-powered system from scratch, tailored to your exact workflows and tools.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Launch & Optimize</h3>
+        <p>We deploy, test, and continuously optimize your automations to maximize ROI.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Scale</h3>
+        <p>As your business grows, we add new automations and capabilities. Your system evolves with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Ready to Put AI to Work for Your Business?</h2>
+  <p>Book a free 15-minute strategy call. No pressure, no commitments — just a clear roadmap for automating your business.</p>
+  <a href="mailto:nexusai@proton.me" class="btn btn-primary btn-large">Book Your Free Call →</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 NexusAI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
