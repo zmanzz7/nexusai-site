@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Assessment — NexusAI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<meta name="description" content="Take our free 2-minute AI Readiness Assessment and discover how AI automation can transform your business. Get personalized recommendations instantly.">
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #10b981;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --white: #ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; color: var(--dark); line-height: 1.6; background:var(--light); }
+
+/* NAV */
+nav { position:sticky; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #e2e8f0; }
+.nav-inner { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:24px; font-weight:800; color:var(--dark); text-decoration:none; }
+.logo span { color:var(--primary); }
+
+/* QUIZ CONTAINER */
+.quiz-wrapper { min-height:100vh; padding:40px 24px; display:flex; align-items:center; justify-content:center; }
+.quiz-container { max-width:700px; width:100%; background:white; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,0.1); padding:48px; position:relative; }
+.progress-bar { height:6px; background:#e2e8f0; border-radius:10px; margin-bottom:40px; overflow:hidden; }
+.progress-fill { height:100%; background:linear-gradient(90deg, var(--primary), var(--accent)); transition:width 0.3s ease; border-radius:10px; }
+
+/* QUIZ HEADER */
+.quiz-header { text-align:center; margin-bottom:40px; }
+.quiz-header h1 { font-size:32px; font-weight:800; margin-bottom:12px; background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.quiz-header p { color:var(--gray); font-size:16px; }
+.question-counter { display:inline-block; background:var(--primary); color:white; padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:20px; }
+
+/* QUESTION */
+.question { display:none; }
+.question.active { display:block; animation:fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.question h2 { font-size:24px; font-weight:700; margin-bottom:24px; color:var(--dark); }
+
+/* OPTIONS */
+.options { display:flex; flex-direction:column; gap:12px; }
+.option { padding:18px 24px; border:2px solid #e2e8f0; border-radius:12px; cursor:pointer; transition:all 0.2s; background:white; font-size:16px; text-align:left; font-weight:500; }
+.option:hover { border-color:var(--primary); background:#f0f5ff; transform:translateX(4px); }
+.option.selected { border-color:var(--primary); background:linear-gradient(135deg, #f0f5ff, #e0f2fe); box-shadow:0 4px 12px rgba(37,99,235,0.15); }
+
+/* DROPDOWN */
+select.option { appearance:none; padding-right:40px; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath fill='%232563eb' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
+
+/* BUTTONS */
+.button-group { display:flex; gap:12px; margin-top:32px; }
+.btn { flex:1; padding:14px 24px; border-radius:10px; font-weight:600; font-size:16px; cursor:pointer; transition:all 0.2s; border:none; text-decoration:none; text-align:center; }
+.btn-primary { background:var(--primary); color:white; }
+.btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(37,99,235,0.3); }
+.btn-primary:disabled { background:#cbd5e1; cursor:not-allowed; transform:none; }
+.btn-secondary { background:#e2e8f0; color:var(--dark); }
+.btn-secondary:hover { background:#cbd5e1; }
+
+/* LEAD CAPTURE */
+#lead-capture { display:none; text-align:center; }
+#lead-capture.active { display:block; animation:fadeIn 0.4s ease; }
+#lead-capture h2 { font-size:28px; font-weight:800; margin-bottom:16px; }
+#lead-capture p { color:var(--gray); margin-bottom:32px; font-size:16px; }
+.form-group { margin-bottom:16px; text-align:left; }
+.form-group label { display:block; font-weight:600; margin-bottom:8px; color:var(--dark); }
+.form-group input { width:100%; padding:14px 20px; border:2px solid #e2e8f0; border-radius:10px; font-size:16px; transition:border 0.2s; }
+.form-group input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+
+/* RESULTS */
+#results { display:none; text-align:center; }
+#results.active { display:block; animation:fadeIn 0.4s ease; }
+.grade-badge { width:120px; height:120px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-size:56px; font-weight:800; color:white; }
+.grade-A { background:linear-gradient(135deg, #10b981, #059669); }
+.grade-B { background:linear-gradient(135deg, #3b82f6, #2563eb); }
+.grade-C { background:linear-gradient(135deg, #f59e0b, #d97706); }
+.grade-D { background:linear-gradient(135deg, #ef4444, #dc2626); }
+.grade-F { background:linear-gradient(135deg, #7f1d1d, #991b1b); }
+#results h2 { font-size:32px; font-weight:800; margin-bottom:12px; }
+#results .score-desc { color:var(--gray); font-size:18px; margin-bottom:40px; }
+.recommendations { text-align:left; margin:40px 0; }
+.recommendations h3 { font-size:20px; font-weight:700; margin-bottom:20px; text-align:center; }
+.recommendation { background:#f0f5ff; border-left:4px solid var(--primary); padding:20px; margin-bottom:16px; border-radius:8px; }
+.recommendation h4 { font-size:16px; font-weight:700; margin-bottom:8px; color:var(--primary); }
+.recommendation p { color:var(--gray); font-size:15px; line-height:1.6; }
+.cta-box { background:linear-gradient(135deg, var(--dark), #1e293b); color:white; padding:32px; border-radius:16px; margin-top:40px; }
+.cta-box h3 { font-size:24px; font-weight:800; margin-bottom:12px; }
+.cta-box p { color:#94a3b8; margin-bottom:24px; }
+.btn-large { padding:16px 32px; font-size:18px; }
+
+@media (max-width:640px) {
+  .quiz-container { padding:32px 24px; }
+  .quiz-header h1 { font-size:24px; }
+  .question h2 { font-size:20px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Nexus<span>AI</span></a>
+  </div>
+</nav>
+
+<div class="quiz-wrapper">
+  <div class="quiz-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="quiz-header">
+      <span class="question-counter" id="counter">Question 1 of 5</span>
+      <h1>AI Readiness Assessment</h1>
+      <p>Discover how AI automation can transform your business in just 2 minutes</p>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question active" data-question="1">
+      <h2>How many hours per week does your team spend on repetitive tasks?</h2>
+      <div class="options">
+        <button class="option" data-value="1-5" data-score="5">1-5 hours</button>
+        <button class="option" data-value="5-15" data-score="15">5-15 hours</button>
+        <button class="option" data-value="15-30" data-score="30">15-30 hours</button>
+        <button class="option" data-value="30+" data-score="50">30+ hours</button>
+      </div>
+      <div class="button-group">
+        <button class="btn btn-primary" id="next-1" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" data-question="2">
+      <h2>Do you currently use any AI or automation tools?</h2>
+      <div class="options">
+        <button class="option" data-value="yes" data-score="20">Yes, we use several tools</button>
+        <button class="option" data-value="no" data-score="5">No, not yet</button>
+        <button class="option" data-value="not-sure" data-score="10">Not sure / Basic tools only</button>
+      </div>
+      <div class="button-group">
+        <button class="btn btn-secondary" id="back-2">← Back</button>
+        <button class="btn btn-primary" id="next-2" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" data-question="3">
+      <h2>What's your biggest operational bottleneck?</h2>
+      <div class="options">
+        <button class="option" data-value="customer-followups" data-score="15">Customer follow-ups</button>
+        <button class="option" data-value="scheduling" data-score="10">Scheduling & coordination</button>
+        <button class="option" data-value="data-entry" data-score="20">Data entry & admin</button>
+        <button class="option" data-value="marketing" data-score="12">Marketing & outreach</button>
+        <button class="option" data-value="other" data-score="8">Other</button>
+      </div>
+      <div class="button-group">
+        <button class="btn btn-secondary" id="back-3">← Back</button>
+        <button class="btn btn-primary" id="next-3" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question" data-question="4">
+      <h2>How many employees do you have?</h2>
+      <div class="options">
+        <button class="option" data-value="solo" data-score="5">Solo (just me)</button>
+        <button class="option" data-value="2-10" data-score="15">2-10 employees</button>
+        <button class="option" data-value="11-50" data-score="25">11-50 employees</button>
+        <button class="option" data-value="50+" data-score="40">50+ employees</button>
+      </div>
+      <div class="button-group">
+        <button class="btn btn-secondary" id="back-4">← Back</button>
+        <button class="btn btn-primary" id="next-4" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question" data-question="5">
+      <h2>What industry are you in?</h2>
+      <div class="options">
+        <select class="option" id="industry-select">
+          <option value="">Select your industry...</option>
+          <option value="healthcare">Healthcare & Dental</option>
+          <option value="real-estate">Real Estate</option>
+          <option value="ecommerce">E-Commerce & Retail</option>
+          <option value="professional-services">Professional Services (Legal, Accounting, etc.)</option>
+          <option value="insurance">Insurance</option>
+          <option value="hospitality">Hospitality & Food Service</option>
+          <option value="construction">Construction & Trades</option>
+          <option value="education">Education & Training</option>
+          <option value="marketing">Marketing & Agency</option>
+          <option value="saas">SaaS & Technology</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button class="btn btn-secondary" id="back-5">← Back</button>
+        <button class="btn btn-primary" id="next-5" disabled>See My Results →</button>
+      </div>
+    </div>
+
+    <!-- Lead Capture -->
+    <div id="lead-capture">
+      <div class="quiz-header">
+        <h2>🎉 Assessment Complete!</h2>
+        <p>Enter your details to see your personalized AI Readiness Score and custom recommendations</p>
+      </div>
+      <form id="lead-form">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" required placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" required placeholder="john@company.com">
+        </div>
+        <div class="form-group">
+          <label for="company">Company Name (optional)</label>
+          <input type="text" id="company" placeholder="Acme Inc.">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:16px;">View My Results →</button>
+      </form>
+      <p style="font-size:12px;color:var(--gray);margin-top:16px;">We'll also email you a detailed PDF report with specific recommendations for your business.</p>
+    </div>
+
+    <!-- Results -->
+    <div id="results">
+      <div class="grade-badge" id="grade-badge"></div>
+      <h2 id="grade-title"></h2>
+      <p class="score-desc" id="grade-desc"></p>
+      
+      <div class="recommendations">
+        <h3>Your Personalized AI Recommendations</h3>
+        <div id="recommendations-list"></div>
+      </div>
+
+      <div class="cta-box">
+        <h3>Ready to Put AI to Work?</h3>
+        <p>Book a free 15-minute strategy call and we'll build a custom automation roadmap for your business.</p>
+        <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-primary btn-large" target="_blank">Book Your Free Strategy Call →</a>
+      </div>
+
+      <div style="text-align:center;margin-top:24px;">
+        <a href="/" class="btn btn-secondary">← Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Quiz State
+let currentQuestion = 1;
+const totalQuestions = 5;
+let answers = {
+  q1: null,
+  q2: null,
+  q3: null,
+  q4: null,
+  q5: null
+};
+let score = 0;
+
+// Industry-specific recommendations
+const industryRecs = {
+  'healthcare': [
+    { title: 'AI Patient Intake Chatbot', desc: 'Automate appointment scheduling, insurance verification, and patient FAQs 24/7. Reduce front desk workload by 60%.' },
+    { title: 'Automated Follow-Up System', desc: 'Send personalized appointment reminders, post-visit surveys, and recall notifications automatically.' },
+    { title: 'Insurance Verification Automation', desc: 'Instantly verify patient insurance eligibility and benefits before appointments, eliminating manual lookups.' }
+  ],
+  'real-estate': [
+    { title: 'AI Lead Qualification System', desc: 'Automatically qualify, score, and route leads to the right agent based on budget, location, and timeline.' },
+    { title: 'CRM Auto-Update Workflow', desc: 'Eliminate data entry — automatically log showings, update deal stages, and sync across all your tools.' },
+    { title: 'Personalized Drip Campaigns', desc: 'AI-powered email sequences that adapt based on buyer behavior, property views, and engagement.' }
+  ],
+  'ecommerce': [
+    { title: '24/7 AI Customer Support', desc: 'Handle order tracking, returns, and FAQs instantly. Escalate complex issues to humans only when needed.' },
+    { title: 'Abandoned Cart Recovery', desc: 'Automatically send personalized follow-ups to recover lost sales with AI-optimized messaging.' },
+    { title: 'Inventory & Order Automation', desc: 'Auto-sync inventory, fulfill orders, and update customers without touching a spreadsheet.' }
+  ],
+  'professional-services': [
+    { title: 'Client Onboarding Automation', desc: 'Automate intake forms, document collection, contract signing, and welcome sequences.' },
+    { title: 'Meeting Scheduling & Prep', desc: 'AI-powered scheduling that syncs calendars, sends reminders, and prepares meeting briefs automatically.' },
+    { title: 'Automated Invoicing & Follow-Ups', desc: 'Generate invoices, send payment reminders, and track receivables without manual effort.' }
+  ],
+  'insurance': [
+    { title: 'Policy Renewal Automation', desc: 'Automatically remind clients of renewals, collect updated info, and process paperwork.' },
+    { title: 'Lead Qualification Chatbot', desc: 'Pre-qualify leads 24/7, collect key information, and route to the right agent instantly.' },
+    { title: 'Claims Status Automation', desc: 'Let clients check claim status via chatbot, reducing inbound call volume by 70%.' }
+  ],
+  'hospitality': [
+    { title: 'AI Reservation Assistant', desc: 'Handle bookings, cancellations, and special requests 24/7 via chatbot or SMS.' },
+    { title: 'Guest Communication Automation', desc: 'Send pre-arrival instructions, upsell offers, and post-stay surveys automatically.' },
+    { title: 'Staff Scheduling Optimizer', desc: 'Use AI to predict demand and auto-generate optimized staff schedules.' }
+  ],
+  'construction': [
+    { title: 'Project Timeline Automation', desc: 'Auto-update timelines, send progress reports, and alert stakeholders when milestones are hit.' },
+    { title: 'Vendor & Subcontractor Coordination', desc: 'Automate scheduling, PO generation, and payment tracking for all vendors.' },
+    { title: 'Client Communication Portal', desc: 'Give clients a self-service portal to check project status, approve changes, and message your team.' }
+  ],
+  'education': [
+    { title: 'Student Inquiry Chatbot', desc: 'Answer enrollment questions, schedule tours, and collect applications 24/7.' },
+    { title: 'Automated Course Reminders', desc: 'Send class reminders, homework notifications, and progress updates to students and parents.' },
+    { title: 'Grading & Feedback Automation', desc: 'Use AI to grade assignments, provide instant feedback, and track student progress.' }
+  ],
+  'marketing': [
+    { title: 'Client Reporting Automation', desc: 'Auto-generate beautiful client reports with key metrics delivered on schedule.' },
+    { title: 'Lead Generation Pipeline', desc: 'Automate prospecting, outreach, follow-ups, and meeting scheduling for new business.' },
+    { title: 'Content Distribution System', desc: 'Schedule, publish, and track content across all channels from a single automated workflow.' }
+  ],
+  'saas': [
+    { title: 'Onboarding Flow Automation', desc: 'Automate user onboarding emails, tutorials, and in-app guidance based on behavior.' },
+    { title: 'AI Support Bot', desc: 'Handle tier-1 support 24/7, deflect tickets, and route complex issues to humans.' },
+    { title: 'Churn Prevention System', desc: 'Detect at-risk users and trigger automated outreach or retention offers.' }
+  ],
+  'other': [
+    { title: 'Workflow Automation Assessment', desc: 'We'll analyze your business processes and identify the top 3 automation opportunities.' },
+    { title: 'Custom AI Chatbot', desc: 'Build an intelligent chatbot trained on your business to handle customer inquiries 24/7.' },
+    { title: 'CRM & Tool Integration', desc: 'Connect all your tools into one automated ecosystem — eliminate data silos.' }
+  ]
+};
+
+// Update progress bar
+function updateProgress() {
+  const progress = (currentQuestion / totalQuestions) * 100;
+  document.getElementById('progress').style.width = progress + '%';
+  document.getElementById('counter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+}
+
+// Handle option selection
+document.querySelectorAll('.option').forEach(option => {
+  option.addEventListener('click', function() {
+    const questionNum = this.closest('.question').dataset.question;
+    
+    // Remove selected from siblings
+    this.parentElement.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+    
+    // Add selected to this option
+    this.classList.add('selected');
+    
+    // Store answer
+    answers[`q${questionNum}`] = {
+      value: this.dataset.value || this.value,
+      score: parseInt(this.dataset.score) || 0
+    };
+    
+    // Enable next button
+    document.getElementById(`next-${questionNum}`).disabled = false;
+  });
+});
+
+// Dropdown handler
+document.getElementById('industry-select').addEventListener('change', function() {
+  if (this.value) {
+    answers.q5 = { value: this.value, score: 0 };
+    document.getElementById('next-5').disabled = false;
+  }
+});
+
+// Navigation
+for (let i = 1; i <= totalQuestions; i++) {
+  // Next button
+  const nextBtn = document.getElementById(`next-${i}`);
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (i === totalQuestions) {
+        // Show lead capture
+        document.querySelector('.question.active').classList.remove('active');
+        document.getElementById('lead-capture').classList.add('active');
+        document.querySelector('.quiz-header').style.display = 'none';
+        document.querySelector('.progress-bar').style.display = 'none';
+      } else {
+        // Next question
+        document.querySelector('.question.active').classList.remove('active');
+        document.querySelector(`[data-question="${i + 1}"]`).classList.add('active');
+        currentQuestion++;
+        updateProgress();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+  
+  // Back button
+  const backBtn = document.getElementById(`back-${i}`);
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      document.querySelector('.question.active').classList.remove('active');
+      document.querySelector(`[data-question="${i - 1}"]`).classList.add('active');
+      currentQuestion--;
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+}
+
+// Lead form submission
+document.getElementById('lead-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const company = document.getElementById('company').value;
+  
+  // Calculate score
+  score = answers.q1.score + answers.q2.score + answers.q3.score + answers.q4.score;
+  
+  // Store lead data
+  const leadData = {
+    name,
+    email,
+    company,
+    answers,
+    score,
+    timestamp: new Date().toISOString()
+  };
+  
+  // Save to localStorage
+  const leads = JSON.parse(localStorage.getItem('quiz-leads') || '[]');
+  leads.push(leadData);
+  localStorage.setItem('quiz-leads', JSON.stringify(leads));
+  
+  // Show results
+  showResults();
+});
+
+function showResults() {
+  document.getElementById('lead-capture').classList.remove('active');
+  document.getElementById('results').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  // Determine grade
+  let grade, gradeTitle, gradeDesc;
+  if (score >= 90) {
+    grade = 'A';
+    gradeTitle = 'Excellent! You're Ready for Advanced AI';
+    gradeDesc = 'Your business is primed for significant automation. You have high-value opportunities and the scale to see major ROI.';
+  } else if (score >= 60) {
+    grade = 'B';
+    gradeTitle = 'Great Potential for AI Automation';
+    gradeDesc = 'You have clear automation opportunities that can save significant time and boost efficiency.';
+  } else if (score >= 40) {
+    grade = 'C';
+    gradeTitle = 'Good Starting Point for AI';
+    gradeDesc = 'AI automation can help you scale. Starting with one or two key workflows will make a big impact.';
+  } else if (score >= 20) {
+    grade = 'D';
+    gradeTitle = 'Early Stage — Perfect Time to Start';
+    gradeDesc = 'Now is the ideal time to build automation into your operations before manual processes become ingrained.';
+  } else {
+    grade = 'F';
+    gradeTitle = 'Automation Can Be a Game-Changer';
+    gradeDesc = 'Even small automations can free up hours of your time. Let's start simple and scale from there.';
+  }
+  
+  // Display grade
+  const badge = document.getElementById('grade-badge');
+  badge.textContent = grade;
+  badge.className = `grade-badge grade-${grade}`;
+  document.getElementById('grade-title').textContent = gradeTitle;
+  document.getElementById('grade-desc').textContent = gradeDesc;
+  
+  // Display industry recommendations
+  const industry = answers.q5.value;
+  const recs = industryRecs[industry] || industryRecs['other'];
+  const recsHTML = recs.map(rec => `
+    <div class="recommendation">
+      <h4>${rec.title}</h4>
+      <p>${rec.desc}</p>
+    </div>
+  `).join('');
+  document.getElementById('recommendations-list').innerHTML = recsHTML;
+}
+
+// Initialize
+updateProgress();
+</script>
+
+</body>
+</html>

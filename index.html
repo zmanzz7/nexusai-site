@@ -3,384 +3,448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexusAI — AI Automation for Growing Businesses</title>
+<title>I Build AI That Handles the Boring Stuff — Zach Aronwald</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-<meta name="description" content="Custom AI chatbots, workflow automation, and intelligent systems that save your business 20+ hours per week. Free strategy call available.">
-<meta property="og:title" content="NexusAI — AI Automation for Growing Businesses">
-<meta property="og:description" content="Custom AI chatbots, workflow automation, and intelligent systems that save your business 20+ hours per week.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ai.zachary-aronwald.com">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NexusAI — AI Automation for Growing Businesses">
-<meta name="twitter:description" content="Custom AI chatbots & automation that save 20+ hours/week. Free strategy call.">
+<meta name="description" content="Hi, I'm Zach. I build custom AI automation that saves you 10-20 hours per week. No templates, no BS — just systems that actually work.">
 <style>
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
+  --primary: #6366f1;
   --accent: #10b981;
   --dark: #0f172a;
   --gray: #64748b;
   --light: #f8fafc;
-  --white: #ffffff;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; color: var(--dark); line-height: 1.6; }
 
 /* NAV */
-nav { position:sticky; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #e2e8f0; }
+nav { position:sticky; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); z-index:100; border-bottom:2px solid #000; }
 .nav-inner { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
-.logo { font-size:24px; font-weight:800; color:var(--dark); text-decoration:none; }
+.logo { font-size:24px; font-weight:900; color:#000; text-decoration:none; letter-spacing:-1px; }
 .logo span { color:var(--primary); }
 .nav-links { display:flex; gap:32px; align-items:center; }
-.nav-links a { color:var(--gray); text-decoration:none; font-size:15px; font-weight:500; }
-.nav-links a:hover { color:var(--dark); }
-.nav-links a.btn-primary { color:white; }
-.nav-links a.btn-primary:hover { color:white; }
-.btn { display:inline-block; padding:10px 24px; border-radius:8px; font-weight:600; text-decoration:none; font-size:15px; transition:all 0.2s; }
-.btn-primary { background:var(--primary); color:white; }
-.btn-primary:hover { background:var(--primary-dark); transform:translateY(-1px); box-shadow:0 4px 12px rgba(37,99,235,0.4); }
-.btn-outline { border:2px solid var(--primary); color:var(--primary); }
-.btn-outline:hover { background:var(--primary); color:white; }
-.btn-large { padding:14px 32px; font-size:17px; }
+.nav-links a { color:#000; text-decoration:none; font-size:15px; font-weight:600; transition:color .2s; }
+.nav-links a:hover { color:var(--primary); }
+.btn { display:inline-block; padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none; font-size:15px; transition:all 0.2s; }
+.btn-primary { background:#000; color:#fff; border:2px solid #000; }
+.btn-primary:hover { background:var(--primary); border-color:var(--primary); transform:translateY(-2px); }
+.btn-outline { border:2px solid #000; color:#000; background:transparent; }
+.btn-outline:hover { background:#000; color:#fff; }
 
 /* HERO */
-.hero { padding:140px 24px 80px; text-align:center; background:linear-gradient(180deg, #f0f5ff 0%, var(--white) 100%); }
-.hero h1 { font-size:56px; font-weight:800; line-height:1.15; max-width:800px; margin:0 auto 24px; }
-.hero h1 span { background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.hero p { font-size:20px; color:var(--gray); max-width:600px; margin:0 auto 40px; }
-.hero-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-.hero-stats { display:flex; gap:48px; justify-content:center; margin-top:60px; }
-.stat { text-align:center; }
-.stat-number { font-size:36px; font-weight:800; color:var(--primary); }
-.stat-label { font-size:14px; color:var(--gray); margin-top:4px; }
+.hero { padding:100px 24px 60px; max-width:900px; margin:0 auto; text-align:center; }
+.hero h1 { font-size:56px; font-weight:900; line-height:1.1; margin-bottom:24px; letter-spacing:-2px; }
+.hero h1 .highlight { background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero .intro { font-size:22px; color:var(--gray); margin-bottom:40px; line-height:1.6; }
+.hero .cta-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
 
-/* URGENCY BANNER */
-.urgency-banner { background:linear-gradient(90deg, #dc2626, #ef4444); color:white; text-align:center; padding:8px 16px; font-size:13px; font-weight:600; }
-.urgency-banner span { background:rgba(0,0,0,0.2); padding:2px 8px; border-radius:4px; margin-left:8px; }
-.hero { padding-top:80px !important; }
+/* CHATBOT WIDGET */
+.chatbot-preview { background:#f8fafc; border:3px solid #000; border-radius:16px; padding:32px; max-width:480px; margin:0 auto; text-align:left; }
+.chatbot-preview .chat-header { font-size:14px; font-weight:700; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; }
+.chat-messages { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
+.chat-bubble { padding:12px 16px; border-radius:16px; font-size:15px; max-width:85%; }
+.chat-bubble.bot { background:#000; color:#fff; align-self:flex-start; border-radius:16px 16px 16px 4px; }
+.chat-bubble.user { background:var(--primary); color:#fff; align-self:flex-end; border-radius:16px 16px 4px 16px; }
+.chat-options { display:flex; flex-direction:column; gap:8px; }
+.chat-option { padding:12px 16px; border:2px solid #000; border-radius:8px; background:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:all .2s; text-align:center; }
+.chat-option:hover { background:#000; color:#fff; transform:translateX(4px); }
 
-/* RESULTS / SOCIAL PROOF */
-.results-section { background:var(--dark); color:white; }
-.results-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px; margin-bottom:48px; }
-.result-card { background:#1e293b; border:1px solid #334155; border-radius:16px; padding:32px; }
-.result-card h3 { font-size:18px; font-weight:700; color:var(--primary); margin-bottom:12px; line-height:1.4; }
-.result-card .client-type { color:#94a3b8; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
-.result-card p { color:#cbd5e1; font-size:15px; margin-bottom:12px; }
-.result-card .metrics { display:flex; gap:20px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px solid #334155; }
-.result-card .metric { text-align:center; }
-.result-card .metric-num { font-size:24px; font-weight:800; color:#10b981; }
-.result-card .metric-label { font-size:12px; color:#94a3b8; }
+/* CALCULATOR */
+.calculator-section { background:#000; color:#fff; padding:80px 24px; }
+.calculator-container { max-width:900px; margin:0 auto; }
+.calc-title { font-size:40px; font-weight:900; margin-bottom:40px; text-align:center; letter-spacing:-1px; }
+.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.calc-inputs { display:flex; flex-direction:column; gap:24px; }
+.calc-group label { display:block; font-size:14px; font-weight:700; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; }
+.calc-group select { width:100%; padding:14px; border:2px solid #334155; border-radius:8px; background:#1e293b; color:#fff; font-size:16px; font-weight:600; }
+.calc-group input[type="range"] { width:100%; height:8px; background:#334155; border-radius:4px; outline:none; }
+.calc-group input[type="range"]::-webkit-slider-thumb { width:24px; height:24px; background:var(--primary); border-radius:50%; cursor:pointer; }
+.calc-value { font-size:32px; font-weight:900; color:var(--primary); margin-top:4px; }
+.calc-results { background:#1e293b; border:3px solid var(--primary); border-radius:16px; padding:40px; text-align:center; }
+.calc-result-label { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px; }
+.calc-result-value { font-size:56px; font-weight:900; color:#fff; margin-bottom:24px; line-height:1; }
+.calc-savings { font-size:18px; color:var(--accent); font-weight:700; margin-bottom:24px; }
+.calc-cta { margin-top:24px; }
 
-/* TESTIMONIALS */
-.testimonials { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
-.testimonial { background:#1e293b; border:1px solid #334155; border-radius:12px; padding:24px; }
-.testimonial p { color:#cbd5e1; font-size:15px; font-style:italic; margin-bottom:12px; }
-.testimonial .author { color:#94a3b8; font-size:13px; }
+/* INDUSTRY TABS */
+.industries-section { padding:80px 24px; }
+.industries-container { max-width:1200px; margin:0 auto; }
+.section-title { font-size:40px; font-weight:900; text-align:center; margin-bottom:16px; letter-spacing:-1px; }
+.section-subtitle { font-size:18px; color:var(--gray); text-align:center; margin-bottom:48px; }
+.industry-tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+.industry-tab { padding:12px 24px; border:2px solid #e2e8f0; border-radius:8px; background:#fff; font-size:15px; font-weight:700; cursor:pointer; transition:all .2s; }
+.industry-tab.active { background:#000; color:#fff; border-color:#000; }
+.industry-tab:hover { border-color:#000; }
+.industry-content { display:none; }
+.industry-content.active { display:block; }
+.automation-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px; }
+.automation-card { background:#f8fafc; border:3px solid #000; border-radius:12px; padding:24px; transition:transform .2s; }
+.automation-card:hover { transform:translateY(-4px); }
+.automation-card h3 { font-size:18px; font-weight:900; margin-bottom:12px; }
+.automation-card p { color:var(--gray); font-size:15px; }
 
-/* ABOUT */
-.about-section { text-align:center; }
-.about-content { max-width:700px; margin:0 auto; }
-.about-content h3 { font-size:24px; font-weight:700; margin-bottom:8px; }
-.about-content .title { color:var(--primary); font-size:15px; margin-bottom:16px; }
-.about-content p { color:var(--gray); font-size:16px; line-height:1.7; }
+/* BEFORE/AFTER */
+.before-after-section { background:#f8fafc; padding:80px 24px; }
+.before-after-container { max-width:1100px; margin:0 auto; }
+.comparison-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:48px; }
+.comparison-card { padding:40px; border-radius:16px; position:relative; }
+.comparison-card.before { background:#fff; border:3px solid #ef4444; }
+.comparison-card.after { background:#000; color:#fff; border:3px solid var(--accent); }
+.comparison-badge { position:absolute; top:-16px; left:24px; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; }
+.comparison-badge.before { background:#ef4444; color:#fff; }
+.comparison-badge.after { background:var(--accent); color:#fff; }
+.comparison-card h3 { font-size:28px; font-weight:900; margin-bottom:24px; }
+.comparison-list { list-style:none; }
+.comparison-list li { padding:12px 0; font-size:16px; display:flex; align-items:start; gap:12px; }
+.comparison-list li::before { content:''; width:24px; height:24px; border-radius:50%; flex-shrink:0; margin-top:2px; }
+.before .comparison-list li::before { background:#ef4444; }
+.after .comparison-list li::before { background:var(--accent); }
+.comparison-big { font-size:48px; font-weight:900; margin-top:24px; }
+.comparison-big.before { color:#ef4444; }
+.comparison-big.after { color:var(--accent); }
 
-/* LEAD CAPTURE */
-.lead-capture { background:linear-gradient(135deg, #1e1b4b, #312e81); color:white; text-align:center; }
-.lead-capture h2 { font-size:32px; font-weight:800; margin-bottom:8px; }
-.lead-capture .sub { color:#a5b4fc; font-size:16px; margin-bottom:24px; }
-.capture-form { display:flex; gap:12px; max-width:480px; margin:0 auto; flex-wrap:wrap; justify-content:center; }
-.capture-form input { flex:1; min-width:220px; padding:14px 20px; border-radius:10px; border:1px solid #4338ca; background:rgba(255,255,255,0.1); color:white; font-size:16px; outline:none; }
-.capture-form input::placeholder { color:#a5b4fc; }
-.capture-form button { padding:14px 28px; border-radius:10px; background:#6366f1; color:white; font-weight:700; font-size:16px; border:none; cursor:pointer; transition:all .2s; }
-.capture-form button:hover { background:#4f46e5; transform:translateY(-1px); }
-section { padding:80px 24px; }
-.container { max-width:1200px; margin:0 auto; }
-.section-title { font-size:40px; font-weight:800; text-align:center; margin-bottom:16px; }
-.section-subtitle { font-size:18px; color:var(--gray); text-align:center; max-width:600px; margin:0 auto 60px; }
-
-/* SERVICES */
-.services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px; }
-.service-card { background:var(--white); border:1px solid #e2e8f0; border-radius:16px; padding:32px; transition:all 0.2s; }
-.service-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.08); }
-.service-icon { width:48px; height:48px; background:linear-gradient(135deg, var(--primary), var(--accent)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px; }
-.service-card h3 { font-size:20px; font-weight:700; margin-bottom:12px; }
-.service-card p { color:var(--gray); font-size:15px; }
-
-/* PRICING */
-.pricing-section { background:var(--light); }
-.pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
-.price-card { background:var(--white); border:1px solid #e2e8f0; border-radius:16px; padding:40px 32px; text-align:center; position:relative; }
-.price-card.featured { border:2px solid var(--primary); transform:scale(1.05); }
-.price-card.featured::before { content:'MOST POPULAR'; position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; padding:4px 16px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:1px; }
-.price-name { font-size:18px; font-weight:600; color:var(--gray); margin-bottom:8px; }
-.price-amount { font-size:48px; font-weight:800; }
-.price-amount span { font-size:18px; color:var(--gray); font-weight:500; }
-.price-desc { color:var(--gray); font-size:14px; margin:12px 0 24px; }
-.price-features { list-style:none; text-align:left; margin-bottom:32px; }
-.price-features li { padding:8px 0; font-size:15px; display:flex; align-items:center; gap:10px; }
-.price-features li::before { content:'✓'; color:var(--accent); font-weight:700; }
-
-/* HOW IT WORKS */
-.steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:40px; }
-.step { text-align:center; }
-.step-number { width:48px; height:48px; border-radius:50%; background:var(--primary); color:white; font-size:20px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
-.step h3 { font-size:18px; font-weight:700; margin-bottom:8px; }
-.step p { color:var(--gray); font-size:15px; }
-
-/* CTA */
-.cta { background:linear-gradient(135deg, var(--dark) 0%, #1e293b 100%); color:white; text-align:center; padding:100px 24px; }
-.cta h2 { font-size:40px; font-weight:800; margin-bottom:16px; }
-.cta p { font-size:18px; color:#94a3b8; margin-bottom:40px; }
+/* MICRO-COMMITMENT CTA */
+.micro-cta-section { background:var(--primary); color:#fff; padding:80px 24px; text-align:center; }
+.micro-cta-container { max-width:700px; margin:0 auto; }
+.micro-cta-section h2 { font-size:40px; font-weight:900; margin-bottom:16px; letter-spacing:-1px; }
+.micro-cta-section p { font-size:18px; margin-bottom:32px; opacity:0.9; }
 
 /* FOOTER */
-footer { background:var(--dark); color:#94a3b8; padding:40px 24px; text-align:center; font-size:14px; }
+footer { background:#000; color:#94a3b8; padding:48px 24px; text-align:center; font-size:14px; }
+.footer-content { max-width:1200px; margin:0 auto; }
+.footer-bio { margin-bottom:32px; }
+.footer-bio img { width:80px; height:80px; border-radius:50%; border:3px solid #fff; margin-bottom:16px; }
+.footer-bio h4 { color:#fff; font-size:18px; font-weight:900; margin-bottom:8px; }
+.footer-bio p { font-size:15px; line-height:1.6; max-width:600px; margin:0 auto; }
 
 @media (max-width:768px) {
   .hero h1 { font-size:36px; }
-  .hero-stats { flex-direction:column; gap:24px; }
-  .price-card.featured { transform:none; }
+  .calc-grid, .comparison-grid { grid-template-columns:1fr; }
+  .industry-tabs { flex-direction:column; }
   .nav-links { display:none; }
 }
 </style>
 </head>
 <body>
 
-<div class="urgency-banner">🔥 Limited availability — We only take on <strong>5 new clients per month</strong> <span>3 spots left for February</span></div>
-
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">Nexus<span>AI</span></a>
+    <a href="#" class="logo">Zach<span>AI</span></a>
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="/blog">Blog</a>
-      <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-primary">Book a Call</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#industries">Industries</a>
+      <a href="#before-after">Results</a>
+      <a href="/audit.html" class="btn btn-primary">Get Free Audit</a>
     </div>
   </div>
 </nav>
 
 <div class="hero">
-  <h1>Automate Your Business with <span>AI-Powered Systems</span></h1>
-  <p>We build custom AI chatbots, automation workflows, and intelligent systems that save you 20+ hours per week and scale your revenue.</p>
-  <div class="hero-buttons">
-    <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-primary btn-large">Book a Free Strategy Call</a>
-    <a href="/demo.html" class="btn btn-outline btn-large">Try a Live Demo</a>
+  <h1>I Build <span class="highlight">AI That Handles the Boring Stuff</span></h1>
+  <p class="intro">Hi, I'm Zach. I build custom AI automation for small businesses — the kind that actually saves you 10-20 hours per week. No templates, no BS, just systems that work.</p>
+  
+  <div class="cta-row">
+    <a href="/audit.html" class="btn btn-primary" style="font-size:18px;padding:16px 36px;">Get Your Free AI Audit →</a>
+    <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-outline" style="font-size:18px;padding:16px 36px;">Book a 15-Min Call</a>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Hours Saved Weekly</div></div>
-    <div class="stat"><div class="stat-number">3x</div><div class="stat-label">Faster Response Times</div></div>
-    <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Always-On Automation</div></div>
+
+  <div class="chatbot-preview">
+    <div class="chat-header">👇 Try the AI Assistant</div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-bubble bot">What's your biggest time-waster right now?</div>
+    </div>
+    <div class="chat-options" id="chatOptions">
+      <div class="chat-option" onclick="handleChatOption('email')">📧 Responding to customer emails</div>
+      <div class="chat-option" onclick="handleChatOption('scheduling')">📅 Scheduling appointments</div>
+      <div class="chat-option" onclick="handleChatOption('data')">📊 Data entry and reporting</div>
+      <div class="chat-option" onclick="handleChatOption('follow')">🔁 Following up with leads</div>
+    </div>
   </div>
 </div>
 
-<section id="services">
-  <div class="container">
-    <h2 class="section-title">What We Build</h2>
-    <p class="section-subtitle">Custom AI solutions tailored to your business. No templates, no cookie-cutter — built from scratch for your specific needs.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🤖</div>
-        <h3>AI Customer Support Chatbots</h3>
-        <p>Intelligent chatbots trained on your business data that handle customer inquiries 24/7, qualify leads, and book appointments — all while sounding human.</p>
+<section id="calculator" class="calculator-section">
+  <div class="calculator-container">
+    <h2 class="calc-title">What's Manual Work Costing You?</h2>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-group">
+          <label>Your Industry</label>
+          <select id="calcIndustry" onchange="updateCalculator()">
+            <option value="25">Restaurant / Food Service ($25/hr avg)</option>
+            <option value="35" selected>Retail / Professional Services ($35/hr avg)</option>
+            <option value="50">Healthcare / Legal ($50/hr avg)</option>
+            <option value="75">Real Estate / Finance ($75/hr avg)</option>
+          </select>
+        </div>
+        <div class="calc-group">
+          <label>Hours Per Week on Manual Tasks</label>
+          <input type="range" id="calcHours" min="5" max="40" value="15" step="1" oninput="updateCalculator()">
+          <div class="calc-value"><span id="hoursValue">15</span> hours/week</div>
+        </div>
+        <div class="calc-group">
+          <label>Automation Can Save</label>
+          <input type="range" id="calcSavings" min="50" max="90" value="70" step="5" oninput="updateCalculator()">
+          <div class="calc-value"><span id="savingsValue">70</span>% of that time</div>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Workflow Automation</h3>
-        <p>Eliminate repetitive tasks. We automate data entry, email sequences, CRM updates, reporting, and internal processes so your team focuses on what matters.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3>AI-Powered Lead Generation</h3>
-        <p>Smart systems that find, qualify, and nurture leads on autopilot. From web scraping to personalized outreach sequences powered by AI.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔗</div>
-        <h3>API & System Integrations</h3>
-        <p>Connect your tools seamlessly. We integrate your CRM, email, Slack, databases, and third-party APIs into one automated ecosystem.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📈</div>
-        <h3>Automated Reporting & Analytics</h3>
-        <p>Real-time dashboards and automated reports delivered to your inbox. Know your numbers without lifting a finger.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🧠</div>
-        <h3>Custom AI Agents</h3>
-        <p>Purpose-built AI agents that handle complex business logic — from document processing to intelligent decision-making systems.</p>
+      <div class="calc-results">
+        <div class="calc-result-label">You're Losing Per Year</div>
+        <div class="calc-result-value" id="costResult">$27,300</div>
+        <div class="calc-savings" id="savingsResult">Save $19,110/year with automation</div>
+        <p style="font-size:15px;color:#94a3b8;">That's <span id="roiMonths" style="color:#fff;font-weight:700;">1-2 months</span> to pay for itself</p>
+        <div class="calc-cta">
+          <a href="/audit.html" class="btn btn-primary" style="font-size:16px;">Get My Custom Audit →</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pricing" class="pricing-section">
-  <div class="container">
-    <h2 class="section-title">Simple, Transparent Pricing</h2>
-    <p class="section-subtitle">No hidden fees. No long-term contracts. Cancel anytime.</p>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">$497<span>/mo</span></div>
-        <div class="price-desc">Perfect for small businesses getting started with AI</div>
-        <ul class="price-features">
-          <li>1 custom AI chatbot or automation</li>
-          <li>Up to 1,000 interactions/mo</li>
-          <li>Basic analytics dashboard</li>
-          <li>Email support</li>
-          <li>Monthly optimization</li>
-        </ul>
-        <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-outline" style="width:100%;text-align:center;">Get Started</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name">Growth</div>
-        <div class="price-amount">$997<span>/mo</span></div>
-        <div class="price-desc">For businesses ready to scale with multiple automations</div>
-        <ul class="price-features">
-          <li>Up to 3 automations or chatbots</li>
-          <li>Unlimited interactions</li>
-          <li>Advanced analytics & reporting</li>
-          <li>Priority Slack/email support</li>
-          <li>Weekly optimization & updates</li>
-          <li>CRM & tool integrations</li>
-        </ul>
-        <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-primary" style="width:100%;text-align:center;">Get Started</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">$2,497<span>/mo</span></div>
-        <div class="price-desc">Full-scale AI transformation for your business</div>
-        <ul class="price-features">
-          <li>Unlimited automations & agents</li>
-          <li>Custom AI model fine-tuning</li>
-          <li>Dedicated account manager</li>
-          <li>24/7 priority support</li>
-          <li>Full system architecture</li>
-          <li>White-label options</li>
-        </ul>
-        <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-outline" style="width:100%;text-align:center;">Contact Us</a>
-      </div>
+<section id="industries" class="industries-section">
+  <div class="industries-container">
+    <h2 class="section-title">What Can AI Automate for You?</h2>
+    <p class="section-subtitle">Every industry wastes time differently. Here's what I can automate for yours.</p>
+    
+    <div class="industry-tabs">
+      <div class="industry-tab active" onclick="showIndustry('restaurant')">🍽️ Restaurants</div>
+      <div class="industry-tab" onclick="showIndustry('dental')">🦷 Dental/Medical</div>
+      <div class="industry-tab" onclick="showIndustry('realestate')">🏠 Real Estate</div>
+      <div class="industry-tab" onclick="showIndustry('hvac')">🔧 HVAC/Contractors</div>
+      <div class="industry-tab" onclick="showIndustry('retail')">🛍️ Retail</div>
     </div>
-  </div>
-</section>
 
-<section class="results-section" id="results">
-  <div class="container">
-    <h2 class="section-title" style="color:white;">Real Results for Real Businesses</h2>
-    <p class="section-subtitle" style="color:#94a3b8;">Here's what AI automation looks like in practice.</p>
-    <div class="results-grid">
-      <div class="result-card">
-        <div class="client-type">Dental Practice • Chicago Suburbs</div>
-        <h3>"From 4-hour response times to under 2 minutes"</h3>
-        <p>A growing dental practice was losing patients because their front desk couldn't keep up with appointment requests and insurance questions. We built an AI chatbot trained on their services, pricing, and insurance policies.</p>
-        <div class="metrics">
-          <div class="metric"><div class="metric-num">78%</div><div class="metric-label">Inquiries Automated</div></div>
-          <div class="metric"><div class="metric-num">23 hrs</div><div class="metric-label">Saved Weekly</div></div>
-          <div class="metric"><div class="metric-num">40%</div><div class="metric-label">More Appointments</div></div>
+    <div id="restaurant" class="industry-content active">
+      <div class="automation-grid">
+        <div class="automation-card">
+          <h3>Auto-Respond to Reservations</h3>
+          <p>AI confirms availability, books tables, sends reminders — no more missed reservations or back-and-forth.</p>
         </div>
-      </div>
-      <div class="result-card">
-        <div class="client-type">Real Estate Brokerage • 15 Agents</div>
-        <h3>"Our agents spend time selling, not doing data entry"</h3>
-        <p>A mid-size brokerage had agents spending 10+ hours/week on CRM updates, follow-up emails, and lead routing. We automated their entire pipeline from lead capture to closing.</p>
-        <div class="metrics">
-          <div class="metric"><div class="metric-num">12 hrs</div><div class="metric-label">Saved Per Agent/Week</div></div>
-          <div class="metric"><div class="metric-num">3x</div><div class="metric-label">Lead Response Speed</div></div>
-          <div class="metric"><div class="metric-num">28%</div><div class="metric-label">Revenue Increase</div></div>
+        <div class="automation-card">
+          <h3>Review Management</h3>
+          <p>Auto-reply to Google/Yelp reviews with personalized responses. Turn negative reviews into opportunities.</p>
         </div>
-      </div>
-      <div class="result-card">
-        <div class="client-type">E-Commerce Brand • $2M Revenue</div>
-        <h3>"We scaled support without hiring a single person"</h3>
-        <p>An online retailer was drowning in support tickets during peak seasons. Our AI agent handles order tracking, returns, and FAQs — escalating only complex issues to humans.</p>
-        <div class="metrics">
-          <div class="metric"><div class="metric-num">85%</div><div class="metric-label">Tickets Resolved by AI</div></div>
-          <div class="metric"><div class="metric-num">$4,200</div><div class="metric-label">Monthly Savings</div></div>
-          <div class="metric"><div class="metric-num">24/7</div><div class="metric-label">Support Coverage</div></div>
+        <div class="automation-card">
+          <h3>No-Show Follow-Up</h3>
+          <p>Automatically reach out to no-shows, offer incentives to rebook, recover lost revenue.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Inventory Alerts</h3>
+          <p>Track stock levels, auto-order supplies when low, never run out of key ingredients again.</p>
         </div>
       </div>
     </div>
 
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>"I was skeptical about AI automation, but NexusAI delivered in a week what I thought would take months. Our chatbot handles more inquiries than my two receptionists combined."</p>
-        <div class="author">— Sarah M., Dental Practice Owner</div>
+    <div id="dental" class="industry-content">
+      <div class="automation-grid">
+        <div class="automation-card">
+          <h3>Appointment Reminders</h3>
+          <p>Automated SMS/email reminders sent 48hrs and 24hrs before appointments. Reduce no-shows by 40%.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Insurance Verification</h3>
+          <p>AI checks coverage, eligibility, and pre-authorizations automatically — no more hold times.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Patient Intake Forms</h3>
+          <p>Patients fill out forms online before arriving. Data flows directly into your system.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Recall Campaign Automation</h3>
+          <p>Auto-reach out to patients due for cleanings, follow-ups, or annual visits. Book more appointments.</p>
+        </div>
       </div>
-      <div class="testimonial">
-        <p>"The ROI was immediate. We cut our response time by 90% and our team finally has time to focus on closing deals instead of chasing leads."</p>
-        <div class="author">— James T., Real Estate Broker</div>
+    </div>
+
+    <div id="realestate" class="industry-content">
+      <div class="automation-grid">
+        <div class="automation-card">
+          <h3>Lead Response in 60 Seconds</h3>
+          <p>AI replies to Zillow/Realtor leads instantly, qualifies them, books showings — before your competitors respond.</p>
+        </div>
+        <div class="automation-card">
+          <h3>CRM Auto-Updates</h3>
+          <p>Every call, email, showing gets logged automatically. No more manual data entry.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Follow-Up Sequences</h3>
+          <p>Automated drip campaigns for buyers, sellers, and past clients. Stay top-of-mind without lifting a finger.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Transaction Coordination</h3>
+          <p>Track deadlines, send reminders, coordinate with lenders/inspectors — all automated.</p>
+        </div>
       </div>
-      <div class="testimonial">
-        <p>"What impressed me most was how personalized the solution was. This wasn't some cookie-cutter chatbot — it actually understands our business."</p>
-        <div class="author">— Maria L., E-Commerce Director</div>
+    </div>
+
+    <div id="hvac" class="industry-content">
+      <div class="automation-grid">
+        <div class="automation-card">
+          <h3>Service Call Scheduling</h3>
+          <p>Customers text or call, AI books the next available tech, sends confirmation — zero admin work.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Seasonal Maintenance Reminders</h3>
+          <p>Auto-reach out to customers when it's time for furnace/AC checkups. Book 30% more maintenance.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Quote Generation</h3>
+          <p>AI creates estimates based on job type, square footage, equipment — sent in minutes, not days.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Review Requests</h3>
+          <p>After every job, auto-send Google review request. Build 5-star reputation on autopilot.</p>
+        </div>
       </div>
-      <div class="testimonial">
-        <p>"Zach and his team are incredibly responsive. They built, tested, and deployed our automation in 5 days. Best investment we've made this year."</p>
-        <div class="author">— David K., Insurance Agency Owner</div>
+    </div>
+
+    <div id="retail" class="industry-content">
+      <div class="automation-grid">
+        <div class="automation-card">
+          <h3>Order Status Updates</h3>
+          <p>Customers get automatic shipping updates, tracking info, delivery confirmations — no support tickets.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Abandoned Cart Recovery</h3>
+          <p>AI follows up with shoppers who left items in cart, offers incentives, recovers 15-25% of lost sales.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Inventory Sync</h3>
+          <p>Stock levels update across your website, Shopify, Amazon, social media — all automatically.</p>
+        </div>
+        <div class="automation-card">
+          <h3>Customer Support Chatbot</h3>
+          <p>Handle FAQs, returns, exchanges 24/7. Escalate complex issues to humans only when needed.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="lead-capture">
-  <div class="container">
-    <h2>Free AI Automation Audit</h2>
-    <p class="sub">Take our 2-minute assessment and get a personalized report on where AI can save your business time and money.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="/audit" class="btn btn-primary btn-large">Take the Free Audit →</a>
-    </div>
-    <p style="color:#6366f1;font-size:13px;margin-top:16px;">✓ No credit card required &nbsp;•&nbsp; ✓ Results in 2 minutes &nbsp;•&nbsp; ✓ Personalized recommendations</p>
-  </div>
-</section>
+<section id="before-after" class="before-after-section">
+  <div class="before-after-container">
+    <h2 class="section-title">Before vs After Automation</h2>
+    <p class="section-subtitle">Here's what changes when you stop doing things manually</p>
+    
+    <div class="comparison-grid">
+      <div class="comparison-card before">
+        <div class="comparison-badge before">Without AI</div>
+        <h3>Your Day Now</h3>
+        <ul class="comparison-list">
+          <li>3 hours manually responding to customer inquiries</li>
+          <li>1.5 hours scheduling appointments and confirmations</li>
+          <li>2 hours following up with leads</li>
+          <li>1 hour copying data between systems</li>
+          <li>30 mins creating reports</li>
+        </ul>
+        <div class="comparison-big before">8 hours/day</div>
+        <p style="margin-top:12px;color:#64748b;">on repetitive tasks</p>
+      </div>
 
-<section class="about-section" id="about">
-  <div class="container">
-    <div class="about-content">
-      <img src="/zach-headshot.jpg" alt="Zach Aronwald" style="width:140px;height:140px;border-radius:50%;object-fit:cover;object-position:center top;margin-bottom:20px;border:3px solid var(--primary);">
-      <h3>Meet the Founder</h3>
-      <div class="title">Zach Aronwald — AI Automation Specialist</div>
-      <p>I started NexusAI because I saw too many small businesses losing time and money to manual processes that should have been automated years ago. Enterprise companies have had AI and automation for decades — I believe every business deserves access to that same technology, without the enterprise price tag. My team and I build custom AI systems that actually work for your specific business, not one-size-fits-all templates that collect dust.</p>
+      <div class="comparison-card after">
+        <div class="comparison-badge after">With AI</div>
+        <h3>Your Day After</h3>
+        <ul class="comparison-list">
+          <li>AI handles 80% of customer inquiries automatically</li>
+          <li>Appointments book themselves, confirmations sent</li>
+          <li>Leads get instant personalized follow-ups</li>
+          <li>Data syncs between systems in real-time</li>
+          <li>Reports generate and email themselves daily</li>
+        </ul>
+        <div class="comparison-big after">0 minutes/day</div>
+        <p style="margin-top:12px;color:#94a3b8;">AI does it all while you sleep</p>
+      </div>
     </div>
-  </div>
-</section>
 
-<section id="how-it-works">
-  <div class="container">
-    <h2 class="section-title">How It Works</h2>
-    <p class="section-subtitle">From idea to automated system in as little as one week.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Free Strategy Call</h3>
-        <p>We learn about your business, identify automation opportunities, and map out your custom solution.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Custom Build</h3>
-        <p>Our team builds your AI-powered system from scratch, tailored to your exact workflows and tools.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Launch & Optimize</h3>
-        <p>We deploy, test, and continuously optimize your automations to maximize ROI.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Scale</h3>
-        <p>As your business grows, we add new automations and capabilities. Your system evolves with you.</p>
-      </div>
+    <div style="text-align:center;margin-top:60px;">
+      <p style="font-size:22px;font-weight:700;margin-bottom:24px;">That's 40 hours per week back in your life</p>
+      <a href="/audit.html" class="btn btn-primary" style="font-size:18px;padding:16px 36px;">See What AI Can Do For You →</a>
     </div>
   </div>
 </section>
 
-<section class="cta" id="contact">
-  <h2>Ready to Put AI to Work for Your Business?</h2>
-  <p>Book a free 15-minute strategy call. No pressure, no commitments — just a clear roadmap for automating your business.</p>
-  <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-primary btn-large">Book Your Free Call →</a>
+<section class="micro-cta-section">
+  <div class="micro-cta-container">
+    <h2>Get Your Free AI Automation Audit</h2>
+    <p>Tell me about your business and I'll show you exactly where you're losing time — plus give you a custom roadmap to automate it.</p>
+    <a href="/audit.html" class="btn btn-outline" style="border-color:#fff;color:#fff;font-size:18px;padding:16px 36px;">Get My Free Audit →</a>
+    <p style="font-size:14px;margin-top:24px;opacity:0.8;">Takes 2 minutes • No credit card • Personalized results</p>
+  </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 NexusAI. All rights reserved.</p>
+  <div class="footer-content">
+    <div class="footer-bio">
+      <img src="/zach-headshot.jpg" alt="Zach Aronwald">
+      <h4>Zach Aronwald</h4>
+      <p>I've built AI automation systems for 50+ businesses across restaurants, healthcare, real estate, and more. My approach is simple: figure out what's wasting your time, build AI to handle it, and give you your life back. No corporate nonsense, no overpriced consulting — just practical automation that pays for itself in weeks.</p>
+    </div>
+    <p>&copy; 2026 Zach Aronwald. All rights reserved.</p>
+  </div>
 </footer>
+
+<script>
+// CALCULATOR
+function updateCalculator() {
+  const hourlyRate = parseInt(document.getElementById('calcIndustry').value);
+  const hoursPerWeek = parseInt(document.getElementById('calcHours').value);
+  const savingsPercent = parseInt(document.getElementById('calcSavings').value);
+  
+  document.getElementById('hoursValue').textContent = hoursPerWeek;
+  document.getElementById('savingsValue').textContent = savingsPercent;
+  
+  const yearlyWaste = hourlyRate * hoursPerWeek * 52;
+  const yearlySavings = yearlyWaste * (savingsPercent / 100);
+  
+  document.getElementById('costResult').textContent = '$' + yearlyWaste.toLocaleString();
+  document.getElementById('savingsResult').textContent = 'Save $' + yearlySavings.toLocaleString() + '/year with automation';
+  
+  const monthsToROI = Math.ceil((997 * 12) / yearlySavings);
+  document.getElementById('roiMonths').textContent = monthsToROI < 2 ? '1 month' : monthsToROI + ' months';
+}
+updateCalculator();
+
+// INDUSTRY TABS
+function showIndustry(industry) {
+  document.querySelectorAll('.industry-tab').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.industry-content').forEach(content => content.classList.remove('active'));
+  
+  event.target.classList.add('active');
+  document.getElementById(industry).classList.add('active');
+}
+
+// CHATBOT
+const chatResponses = {
+  email: "I'd build you an AI that reads incoming emails, drafts responses based on your business knowledge, and either auto-sends or queues for your review. You'd go from 3 hours/day to 15 minutes. Want to see how?",
+  scheduling: "I'd set up an AI scheduler that reads availability from your calendar, books appointments, sends confirmations, and reschedules when needed. Completely hands-free. Want a custom demo?",
+  data: "I'd create automation that pulls data from your tools, formats it, updates your CRM/spreadsheets, and generates reports — all while you sleep. No more copy-paste. Interested?",
+  follow: "I'd build an AI that tracks leads, sends personalized follow-ups based on their behavior, and books calls automatically. Your leads get instant responses even at 2am. Sound good?"
+};
+
+function handleChatOption(type) {
+  const messagesDiv = document.getElementById('chatMessages');
+  const optionsDiv = document.getElementById('chatOptions');
+  
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.textContent = event.target.textContent;
+  messagesDiv.appendChild(userBubble);
+  
+  optionsDiv.style.display = 'none';
+  
+  setTimeout(() => {
+    const botBubble = document.createElement('div');
+    botBubble.className = 'chat-bubble bot';
+    botBubble.textContent = chatResponses[type];
+    messagesDiv.appendChild(botBubble);
+    
+    setTimeout(() => {
+      const ctaButton = document.createElement('div');
+      ctaButton.innerHTML = '<a href="/audit.html" class="btn btn-primary" style="display:inline-block;margin-top:12px;">Yes, Show Me How →</a>';
+      messagesDiv.appendChild(ctaButton);
+    }, 800);
+  }, 600);
+}
+</script>
 
 </body>
 </html>
