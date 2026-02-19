@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept C2 - Noir Asymmetric</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Geist','Inter',system-ui,sans-serif;background:#0a0a0a;color:#ededed;overflow-x:hidden}
+::selection{background:rgba(255,255,255,.12);color:#fff}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:28px 80px;display:flex;justify-content:space-between;align-items:center}
+nav::after{content:'';position:absolute;bottom:0;left:80px;right:80px;height:1px;background:rgba(255,255,255,.04)}
+nav .logo{font-family:'Instrument Serif',serif;font-size:28px;color:#fff;letter-spacing:-1px}
+nav .logo sup{font-size:10px;font-family:'Geist',sans-serif;color:rgba(255,255,255,.2);vertical-align:super;letter-spacing:2px;margin-left:4px}
+nav .nav-right{display:flex;align-items:center;gap:40px}
+nav ul{list-style:none;display:flex;gap:32px}
+nav ul li a{color:rgba(255,255,255,.35);font-size:12px;font-weight:400;text-decoration:none;transition:color .4s;letter-spacing:1.5px;text-transform:uppercase}
+nav ul li a:hover{color:#fff}
+nav .cta-nav{color:#fff;font-size:12px;text-decoration:none;padding:12px 28px;border:1px solid rgba(255,255,255,.12);transition:all .4s;letter-spacing:1.5px;text-transform:uppercase}
+nav .cta-nav:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
+
+/* Hero — full viewport, dramatic */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 100px;position:relative}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-family:'Instrument Serif',serif;font-size:28vw;color:rgba(255,255,255,.015);pointer-events:none;white-space:nowrap;letter-spacing:-0.05em;user-select:none}
+.hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.hero-left h1{font-family:'Instrument Serif',serif;font-size:clamp(48px,7vw,96px);line-height:.95;letter-spacing:-3px;font-weight:400}
+.hero-left h1 .line2{display:block;color:rgba(255,255,255,.15);margin-top:8px}
+.hero-right{padding-bottom:8px}
+.hero-right p{font-size:15px;color:rgba(255,255,255,.35);line-height:2;max-width:400px;margin-bottom:40px;font-weight:300}
+.hero-cta{display:inline-flex;align-items:center;gap:20px;color:#ededed;font-size:14px;text-decoration:none;letter-spacing:.5px;transition:gap .4s;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.hero-cta:hover{gap:32px}
+.hero-cta .circle{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;transition:all .4s;font-size:16px}
+.hero-cta:hover .circle{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.3)}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.hero-scroll span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.15);writing-mode:vertical-lr}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.15),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2)}}
+
+/* Horizontal rule with label */
+.labeled-hr{padding:0 80px;display:flex;align-items:center;gap:24px}
+.labeled-hr span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.15);white-space:nowrap}
+.labeled-hr::before,.labeled-hr::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.04)}
+
+/* Services — staggered editorial layout */
+.services{padding:140px 80px;max-width:1400px;margin:0 auto}
+.services-header{margin-bottom:100px}
+.services-header h2{font-family:'Instrument Serif',serif;font-size:64px;font-weight:400;letter-spacing:-2px;line-height:1.05}
+.services-header h2 span{color:rgba(255,255,255,.15)}
+.service-row{display:grid;grid-template-columns:80px 1fr 1fr;gap:40px;padding:48px 0;border-top:1px solid rgba(255,255,255,.04);align-items:start;transition:all .5s}
+.service-row:hover{padding-left:16px}
+.service-num{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.12);padding-top:4px;font-variant-numeric:tabular-nums}
+.service-row h3{font-family:'Instrument Serif',serif;font-size:32px;font-weight:400;letter-spacing:-0.5px;transition:color .4s}
+.service-row:hover h3{color:#fff}
+.service-row p{font-size:14px;color:rgba(255,255,255,.25);line-height:1.9;max-width:380px;transition:color .4s}
+.service-row:hover p{color:rgba(255,255,255,.45)}
+
+/* Big statement */
+.statement{padding:160px 80px;position:relative;overflow:hidden}
+.statement-inner{max-width:1000px;margin:0 auto;text-align:center}
+.statement q{font-family:'Instrument Serif',serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.4;letter-spacing:-1px;color:rgba(255,255,255,.6);display:block;quotes:none}
+.statement q em{font-style:italic;color:#ededed}
+.statement-attr{margin-top:32px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.12)}
+
+/* Metrics — oversized, asymmetric */
+.metrics{padding:120px 80px;max-width:1400px;margin:0 auto}
+.metrics-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 0.8fr;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.metric{padding:64px 48px 64px 0;border-right:1px solid rgba(255,255,255,.04);position:relative}
+.metric:last-child{border-right:none;padding-right:0}
+.metric:first-child{padding-left:0}
+.metric-num{font-family:'Instrument Serif',serif;font-size:clamp(56px,6vw,88px);font-weight:400;letter-spacing:-4px;line-height:.85;transition:color .4s}
+.metric:hover .metric-num{color:#fff}
+.metric-unit{font-family:'Instrument Serif',serif;font-size:clamp(28px,3vw,44px);color:rgba(255,255,255,.2);letter-spacing:-1px}
+.metric-label{font-size:12px;color:rgba(255,255,255,.18);margin-top:20px;line-height:1.7;letter-spacing:.5px;max-width:200px}
+
+/* Process — horizontal cards */
+.process{padding:140px 80px}
+.process-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px;max-width:1400px;margin-left:auto;margin-right:auto}
+.process-header h2{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;letter-spacing:-1.5px}
+.process-header p{font-size:13px;color:rgba(255,255,255,.2);max-width:280px;text-align:right;line-height:1.8}
+.process-track{display:flex;gap:1px;max-width:1400px;margin:0 auto;background:rgba(255,255,255,.04);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.04)}
+.process-card{flex:1;background:#0a0a0a;padding:56px 44px;position:relative;transition:background .5s}
+.process-card:hover{background:rgba(255,255,255,.02)}
+.process-card .num{font-family:'Instrument Serif',serif;font-size:72px;color:rgba(255,255,255,.04);position:absolute;top:24px;right:32px;letter-spacing:-3px}
+.process-card h3{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;margin-bottom:16px;letter-spacing:-0.3px;position:relative}
+.process-card p{font-size:13px;color:rgba(255,255,255,.25);line-height:1.9;position:relative}
+.process-card::after{content:'→';position:absolute;right:-16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.08);font-size:20px;z-index:1}
+.process-card:last-child::after{display:none}
+
+/* About — editorial split */
+.about{padding:140px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:0.4fr 0.6fr;gap:120px;align-items:start}
+.about-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.12);margin-bottom:24px}
+.about h2{font-family:'Instrument Serif',serif;font-size:44px;font-weight:400;letter-spacing:-1.5px;line-height:1.15;margin-bottom:32px}
+.about-right p{font-size:15px;color:rgba(255,255,255,.3);line-height:2;margin-bottom:20px;font-weight:300}
+.about-right p strong{color:rgba(255,255,255,.7);font-weight:500}
+
+/* CTA */
+.cta-section{padding:200px 80px;text-align:center;position:relative}
+.cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:100px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.06))}
+.cta-section h2{font-family:'Instrument Serif',serif;font-size:clamp(48px,5vw,72px);font-weight:400;letter-spacing:-2px;margin-bottom:20px;line-height:1.05}
+.cta-section h2 .dim{color:rgba(255,255,255,.15)}
+.cta-section p{font-size:14px;color:rgba(255,255,255,.2);margin-bottom:56px;font-weight:300;letter-spacing:.3px}
+.cta-btn{display:inline-flex;align-items:center;gap:20px;padding:24px 56px;border:1px solid rgba(255,255,255,.1);color:#ededed;font-size:13px;font-weight:400;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:all .5s;position:relative;overflow:hidden}
+.cta-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.03);transform:translateX(-100%);transition:transform .5s}
+.cta-btn:hover::before{transform:translateX(0)}
+.cta-btn:hover{border-color:rgba(255,255,255,.25)}
+.cta-btn span{position:relative;z-index:1}
+
+/* Footer */
+footer{padding:48px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.04);font-size:11px;color:rgba(255,255,255,.1);letter-spacing:1.5px;text-transform:uppercase}
+footer a{color:rgba(255,255,255,.2);text-decoration:none;transition:color .3s}
+footer a:hover{color:rgba(255,255,255,.5)}
+
+@media(max-width:900px){
+  nav{padding:20px 32px}
+  .hero{padding:0 32px 60px}
+  .hero-content{grid-template-columns:1fr;gap:40px}
+  .hero-bg-text{font-size:50vw}
+  .services,.metrics,.process,.about,.cta-section{padding-left:32px;padding-right:32px}
+  .service-row{grid-template-columns:1fr;gap:16px}
+  .service-num{display:none}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .process-track{flex-direction:column}
+  .process-card::after{display:none}
+  .about{grid-template-columns:1fr;gap:48px}
+  footer{flex-direction:column;gap:16px;text-align:center}
+}
+</style>
+<!-- TODO: Replace GA_MEASUREMENT_ID with real ID from analytics.google.com -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- TODO: Replace CLARITY_PROJECT_ID with real ID from clarity.microsoft.com -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','CLARITY_PROJECT_ID');</script>
+</head>
+<body>
+
+<nav>
+  <div class="logo">ZA<sup>®</sup></div>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Process</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <a href="#" class="cta-nav">Get Your Audit</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text">automate</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1>Less busywork.<span class="line2">More business.</span></h1>
+    </div>
+    <div class="hero-right">
+      <p>Custom AI systems that handle the repetitive work your team shouldn't be doing. Built around your workflow. Live in weeks. Pays for itself in 30 days.</p>
+      <a href="#" class="hero-cta">
+        <span class="circle">→</span>
+        Get your free automation audit
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="labeled-hr"><span>Services</span></div>
+
+<section class="services">
+  <div class="services-header">
+    <h2>What I automate <span>for you</span></h2>
+  </div>
+  
+  <div class="service-row">
+    <div class="service-num">001</div>
+    <h3>Customer inquiries</h3>
+    <p>AI responds instantly in your voice — booking appointments, answering questions, following up. Your customers get 24/7 attention. You get your evenings back.</p>
+  </div>
+  <div class="service-row">
+    <div class="service-num">002</div>
+    <h3>Review management</h3>
+    <p>Automatic responses to Google and Yelp reviews. Negatives handled with care. Positives amplified. Your reputation builds itself.</p>
+  </div>
+  <div class="service-row">
+    <div class="service-num">003</div>
+    <h3>Lead follow-up</h3>
+    <p>Automated sequences that nurture every lead until they convert. No more dropped balls, no more "I forgot to call them back."</p>
+  </div>
+  <div class="service-row">
+    <div class="service-num">004</div>
+    <h3>Scheduling & reminders</h3>
+    <p>Appointments book themselves. Confirmations and reminders go out automatically. No-shows get re-engaged without you lifting a finger.</p>
+  </div>
+  <div class="service-row">
+    <div class="service-num">005</div>
+    <h3>Reports & data</h3>
+    <p>Daily, weekly, monthly — your business data compiled, analyzed, and delivered. Decisions backed by numbers you didn't have to crunch.</p>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="statement-inner">
+    <q>The best automation is the kind <em>you forget is running.</em> I build systems that disappear into your workflow — until you check the numbers.</q>
+  </div>
+</section>
+
+<section class="metrics">
+  <div class="metrics-grid">
+    <div class="metric">
+      <div><span class="metric-num">80</span><span class="metric-unit">%</span></div>
+      <div class="metric-label">Less time spent on manual customer responses</div>
+    </div>
+    <div class="metric">
+      <div><span class="metric-num">15</span><span class="metric-unit">h</span></div>
+      <div class="metric-label">Saved per week on average per client</div>
+    </div>
+    <div class="metric">
+      <div><span class="metric-num">30</span><span class="metric-unit">d</span></div>
+      <div class="metric-label">Average time to full return on investment</div>
+    </div>
+    <div class="metric">
+      <div><span class="metric-num">0</span></div>
+      <div class="metric-label">Templates. Everything custom.</div>
+    </div>
+  </div>
+</section>
+
+<div class="labeled-hr"><span>How It Works</span></div>
+
+<section class="process">
+  <div class="process-header">
+    <h2>Three steps. Four weeks.</h2>
+    <p>From first conversation to live automation. No disruption to your day-to-day.</p>
+  </div>
+  <div class="process-track">
+    <div class="process-card">
+      <div class="num">01</div>
+      <h3>Audit</h3>
+      <p>Free 15-minute call. I map your workflow, find the bottlenecks, and show you exactly where AI saves you time and money.</p>
+    </div>
+    <div class="process-card">
+      <div class="num">02</div>
+      <h3>Build</h3>
+      <p>I design and develop automation tailored to your exact processes. No cookie-cutter solutions. Every piece fits your business.</p>
+    </div>
+    <div class="process-card">
+      <div class="num">03</div>
+      <h3>Launch</h3>
+      <p>Your system goes live. I handle onboarding, train your team, and provide ongoing support. You start saving time day one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-left">
+    <div class="about-label">About</div>
+    <h2>Built by someone who gets small business</h2>
+  </div>
+  <div class="about-right">
+    <p>I'm <strong>Zach Aronwald</strong>. I build AI automation systems for small businesses — the kind that actually work, not the kind that look impressive in a demo and fall apart in practice.</p>
+    <p>My approach: figure out what's costing you time, build AI to handle it, give you your life back. <strong>No corporate fluff. No overpriced retainers.</strong> Just practical systems that pay for themselves in weeks.</p>
+    <p>Every system I build is custom. Because your business isn't a template — and your automation shouldn't be either.</p>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Your move<span class="dim">.</span></h2>
+  <p>Free 15-minute audit. I'll map your workflow and tell you exactly what to automate first.</p>
+  <a href="#" class="cta-btn"><span>Book your free audit</span></a>
+</section>
+
+<footer>
+  <span>© 2026 Zach Aronwald</span>
+  <div style="display:flex;gap:32px">
+    <a href="#">Twitter</a>
+    <a href="#">Email</a>
+    <a href="#">Calendly</a>
+  </div>
+</footer>
+
+</body>
+</html>

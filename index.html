@@ -3,177 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I Build AI That Handles the Boring Stuff — Zach Aronwald</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-<meta name="description" content="Hi, I'm Zach. I build custom AI automation that saves you 10-20 hours per week. No templates, no BS — just systems that actually work.">
+<title>Zach Aronwald — AI Automation for Small Business</title>
+<meta name="description" content="Custom AI automation systems for small businesses. Save 10-20 hours per week. No templates, no fluff — just systems that pay for themselves in 30 days.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --primary: #6366f1;
-  --accent: #10b981;
-  --dark: #0f172a;
-  --gray: #64748b;
-  --light: #f8fafc;
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Geist','Inter',system-ui,sans-serif;background:#0c0c0c;color:#ededed;overflow-x:hidden}
+::selection{background:rgba(255,255,255,.12);color:#fff}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:28px 80px;display:flex;justify-content:space-between;align-items:center;background:rgba(12,12,12,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+nav .logo{font-family:'Instrument Serif',serif;font-size:28px;color:#fff}
+nav .logo span{font-family:'Geist',system-ui,sans-serif;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-left:10px;vertical-align:middle}
+nav ul{list-style:none;display:flex;gap:40px}
+nav ul li a{color:rgba(255,255,255,.55);font-size:13px;font-weight:400;text-decoration:none;transition:color .3s;letter-spacing:.5px}
+nav ul li a:hover{color:#fff}
+nav .cta-nav{color:#fff;font-size:13px;text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.4);transition:border-color .3s;letter-spacing:.5px}
+nav .cta-nav:hover{border-color:#fff}
+
+/* Hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 80px 100px;position:relative}
+.hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.08),transparent)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:140px 80px 100px;background:rgba(255,255,255,.02)}
+.hero-tag{font-size:11px;text-transform:uppercase;letter-spacing:5px;color:rgba(255,255,255,.45);margin-bottom:40px}
+.hero h1{font-family:'Instrument Serif',serif;font-size:76px;line-height:1.05;letter-spacing:-2px;margin-bottom:32px;font-weight:400}
+.hero h1 .thin{opacity:.4}
+.hero-right p{font-size:16px;color:rgba(255,255,255,.55);line-height:2;margin-bottom:48px;font-weight:300;max-width:440px}
+.hero-ctas{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.btn-line{padding:20px 0;color:#ededed;font-size:15px;font-weight:400;text-decoration:none;display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,.12);width:100%;max-width:380px;transition:all .3s;letter-spacing:.3px}
+.btn-line:hover{border-color:rgba(255,255,255,.4);gap:24px}
+.btn-line .arrow{font-size:18px;transition:transform .3s}
+.btn-line:hover .arrow{transform:translateX(4px)}
+.btn-line.muted{color:rgba(255,255,255,.45)}
+.btn-line.muted:hover{color:rgba(255,255,255,.75)}
+
+/* Horizontal scroll text */
+.scroll-text{padding:60px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
+.scroll-inner{display:flex;gap:80px;animation:marquee 25s linear infinite;white-space:nowrap}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.scroll-inner span{font-family:'Instrument Serif',serif;font-size:20px;color:rgba(255,255,255,.18);letter-spacing:2px}
+
+/* Bento Grid */
+.bento{padding:120px 80px;max-width:1400px;margin:0 auto}
+.bento-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}
+.bento-header h2{font-family:'Instrument Serif',serif;font-size:56px;font-weight:400;letter-spacing:-1.5px}
+.bento-header p{font-size:14px;color:rgba(255,255,255,.45);max-width:300px;text-align:right;line-height:1.7}
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:1px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.bento-card{background:#0c0c0c;padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;min-height:240px;transition:background .5s}
+.bento-card:hover{background:rgba(255,255,255,.03)}
+.bento-card.span-8{grid-column:span 8}
+.bento-card.span-4{grid-column:span 4}
+.bento-card.span-6{grid-column:span 6}
+.bento-card .card-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.3);margin-bottom:auto}
+.bento-card h3{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;letter-spacing:-0.5px;margin-bottom:12px;margin-top:24px}
+.bento-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8}
+
+/* Calculator */
+.calc-section{padding:120px 80px;border-top:1px solid rgba(255,255,255,.06)}
+.calc-inner{max-width:1200px;margin:0 auto}
+.calc-section h2{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;letter-spacing:-1.5px;text-align:center;margin-bottom:64px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.calc-inputs{display:flex;flex-direction:column;gap:32px}
+.calc-group label{display:block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+.calc-group select{width:100%;padding:16px 20px;border:1px solid rgba(255,255,255,.1);border-radius:0;background:rgba(255,255,255,.03);color:#ededed;font-size:15px;font-family:'Geist',system-ui,sans-serif;appearance:none;cursor:pointer;transition:border-color .3s;outline:none}
+.calc-group select:focus{border-color:rgba(255,255,255,.3)}
+.calc-group input[type="range"]{width:100%;height:2px;background:rgba(255,255,255,.12);border-radius:0;outline:none;-webkit-appearance:none;margin-top:4px}
+.calc-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:#ededed;border-radius:50%;cursor:pointer;transition:transform .2s}
+.calc-group input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.calc-value{font-family:'Instrument Serif',serif;font-size:36px;margin-top:8px;letter-spacing:-1px}
+.calc-results{border:1px solid rgba(255,255,255,.08);padding:56px 48px;text-align:center;position:relative}
+.calc-results::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40px;height:1px;background:rgba(255,255,255,.15)}
+.calc-result-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px}
+.calc-result-value{font-family:'Instrument Serif',serif;font-size:72px;letter-spacing:-3px;line-height:1;margin-bottom:20px}
+.calc-savings{font-size:15px;color:rgba(255,255,255,.55);margin-bottom:8px}
+.calc-roi{font-size:14px;color:rgba(255,255,255,.35)}
+.calc-roi strong{color:rgba(255,255,255,.8)}
+.calc-cta{margin-top:32px}
+.calc-cta a{display:inline-flex;padding:16px 40px;border:1px solid rgba(255,255,255,.15);color:#ededed;font-size:13px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .4s}
+.calc-cta a:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
+
+/* About */
+.about-section{padding:120px 80px;border-top:1px solid rgba(255,255,255,.06)}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.4fr 0.6fr;gap:100px;align-items:start}
+.about-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.about-inner h2{font-family:'Instrument Serif',serif;font-size:44px;font-weight:400;letter-spacing:-1.5px;line-height:1.15}
+.about-right p{font-size:15px;color:rgba(255,255,255,.5);line-height:2;margin-bottom:20px;font-weight:300}
+.about-right p strong{color:rgba(255,255,255,.85);font-weight:500}
+
+/* Audit Form */
+.audit-section{padding:100px 80px 80px;border-top:1px solid rgba(255,255,255,.06)}
+.audit-inner{max-width:600px;margin:0 auto;text-align:center}
+.audit-section h2{font-family:'Instrument Serif',serif;font-size:48px;font-weight:400;letter-spacing:-1.5px;margin-bottom:12px}
+.audit-section>p,.audit-inner>p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:40px;font-weight:300}
+.audit-section h2{font-family:'Instrument Serif',serif;font-size:48px;font-weight:400;letter-spacing:-1.5px;margin-bottom:16px}
+.audit-section>p,.audit-inner>p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:48px;font-weight:300}
+.audit-form{display:flex;flex-direction:column;gap:16px;text-align:left;margin-top:40px}
+.audit-form input,.audit-form select{width:100%;padding:16px 20px;border:1px solid rgba(255,255,255,.1);border-radius:0;background:rgba(255,255,255,.03);color:#ededed;font-size:15px;font-family:'Geist',system-ui,sans-serif;outline:none;transition:border-color .3s}
+.audit-form input::placeholder{color:rgba(255,255,255,.25)}
+.audit-form input:focus,.audit-form select:focus{border-color:rgba(255,255,255,.3)}
+.audit-form select{appearance:none;cursor:pointer}
+.audit-submit{padding:18px 40px;background:#ededed;color:#0c0c0c;border:none;font-size:14px;font-weight:600;font-family:'Geist',system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:8px}
+.audit-submit:hover{background:#fff;transform:translateY(-1px)}
+.audit-trust{display:flex;justify-content:center;gap:32px;margin-top:48px;font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+.audit-success{display:none;text-align:center;padding:40px 0}
+.audit-success.active{display:block}
+.audit-success h3{font-family:'Instrument Serif',serif;font-size:36px;margin-bottom:12px}
+.audit-success p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:32px}
+.audit-success a{display:inline-flex;padding:16px 40px;background:#ededed;color:#0c0c0c;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.audit-success a:hover{background:#fff}
+
+/* Metrics */
+.metrics{padding:100px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.metric{padding:48px 40px;border-right:1px solid rgba(255,255,255,.08);text-align:left}
+.metric:last-child{border-right:none}
+.metric-num{font-family:'Instrument Serif',serif;font-size:72px;font-weight:400;letter-spacing:-3px;line-height:1}
+.metric-label{font-size:13px;color:rgba(255,255,255,.45);margin-top:16px;line-height:1.6;letter-spacing:.3px}
+
+/* Testimonial */
+.testimonial{padding:120px 80px;max-width:900px;margin:0 auto;text-align:center}
+.testimonial blockquote{font-family:'Instrument Serif',serif;font-size:36px;font-weight:400;line-height:1.5;letter-spacing:-0.5px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.testimonial cite{font-size:13px;color:rgba(255,255,255,.4);font-style:normal;letter-spacing:2px;text-transform:uppercase}
+
+/* CTA */
+.cta-section{padding:160px 80px;text-align:center;position:relative}
+.cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.12))}
+.cta-section h2{font-family:'Instrument Serif',serif;font-size:64px;font-weight:400;letter-spacing:-2px;margin-bottom:20px}
+.cta-section p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:48px;font-weight:300}
+.btn-primary-c{display:inline-flex;padding:20px 56px;border:1px solid rgba(255,255,255,.2);border-radius:0;color:#ededed;font-size:14px;font-weight:400;text-decoration:none;letter-spacing:1px;transition:all .4s}
+.btn-primary-c:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4)}
+
+/* Footer */
+footer{padding:40px 80px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.3);letter-spacing:1px;border-top:1px solid rgba(255,255,255,.06)}
+footer a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s}
+footer a:hover{color:rgba(255,255,255,.7)}
+
+/* Responsive */
+@media(max-width:900px){
+  nav{padding:20px 32px}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:120px 32px 40px}
+  .hero-left::after{display:none}
+  .hero h1{font-size:48px}
+  .hero-right{padding:40px 32px 80px}
+  .bento{padding:80px 32px}
+  .bento-header{flex-direction:column;gap:16px;align-items:flex-start}
+  .bento-header p{text-align:left}
+  .bento-header h2{font-size:40px}
+  .bento-grid{grid-template-columns:1fr}
+  .bento-card.span-8,.bento-card.span-4,.bento-card.span-6{grid-column:span 1}
+  .calc-section{padding:80px 32px}
+  .calc-section h2{font-size:36px}
+  .calc-grid{grid-template-columns:1fr;gap:48px}
+  .metrics{grid-template-columns:1fr 1fr;padding:60px 32px}
+  .metric{padding:32px 24px}
+  .testimonial{padding:80px 32px}
+  .testimonial blockquote{font-size:24px}
+  .about-section{padding:80px 32px}
+  .about-inner{grid-template-columns:1fr;gap:32px}
+  .audit-section{padding:80px 32px}
+  .audit-section h2{font-size:36px}
+  footer{padding:32px;flex-direction:column;gap:16px;text-align:center}
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; color: var(--dark); line-height: 1.6; }
-
-/* NAV */
-nav { position:sticky; top:0; width:100%; background:rgba(255,255,255,0.98); backdrop-filter:blur(10px); z-index:100; border-bottom:2px solid #000; }
-.nav-inner { max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; justify-content:space-between; align-items:center; }
-.logo { font-size:24px; font-weight:900; color:#000; text-decoration:none; letter-spacing:-1px; }
-.logo span { color:var(--primary); }
-.nav-links { display:flex; gap:32px; align-items:center; }
-.nav-links a { color:#000; text-decoration:none; font-size:15px; font-weight:600; transition:color .2s; }
-.nav-links a:hover { color:var(--primary); }
-.btn { display:inline-block; padding:12px 28px; border-radius:8px; font-weight:700; text-decoration:none; font-size:15px; transition:all 0.2s; }
-.btn-primary { background:#000; color:#fff !important; border:2px solid #000; }
-.btn-primary:hover { background:var(--primary); border-color:var(--primary); transform:translateY(-2px); color:#fff !important; }
-.btn-outline { border:2px solid #000; color:#000; background:transparent; }
-.btn-outline:hover { background:#000; color:#fff; }
-
-/* HERO */
-.hero { padding:100px 24px 60px; max-width:900px; margin:0 auto; text-align:center; }
-.hero h1 { font-size:56px; font-weight:900; line-height:1.1; margin-bottom:24px; letter-spacing:-2px; }
-.hero h1 .highlight { background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.hero .intro { font-size:22px; color:var(--gray); margin-bottom:40px; line-height:1.6; }
-.hero .cta-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px; }
-
-/* CHATBOT WIDGET */
-.chatbot-preview { background:#f8fafc; border:3px solid #000; border-radius:16px; padding:32px; max-width:480px; margin:0 auto; text-align:left; }
-.chatbot-preview .chat-header { font-size:14px; font-weight:700; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; }
-.chat-messages { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
-.chat-bubble { padding:12px 16px; border-radius:16px; font-size:15px; max-width:85%; }
-.chat-bubble.bot { background:#000; color:#fff; align-self:flex-start; border-radius:16px 16px 16px 4px; }
-.chat-bubble.user { background:var(--primary); color:#fff; align-self:flex-end; border-radius:16px 16px 4px 16px; }
-.chat-options { display:flex; flex-direction:column; gap:8px; }
-.chat-option { padding:12px 16px; border:2px solid #000; border-radius:8px; background:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:all .2s; text-align:center; }
-.chat-option:hover { background:#000; color:#fff; transform:translateX(4px); }
-
-/* CALCULATOR */
-.calculator-section { background:#000; color:#fff; padding:80px 24px; }
-.calculator-container { max-width:900px; margin:0 auto; }
-.calc-title { font-size:40px; font-weight:900; margin-bottom:40px; text-align:center; letter-spacing:-1px; }
-.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
-.calc-inputs { display:flex; flex-direction:column; gap:24px; }
-.calc-group label { display:block; font-size:14px; font-weight:700; margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; }
-.calc-group select { width:100%; padding:14px; border:2px solid #334155; border-radius:8px; background:#1e293b; color:#fff; font-size:16px; font-weight:600; }
-.calc-group input[type="range"] { width:100%; height:8px; background:#334155; border-radius:4px; outline:none; }
-.calc-group input[type="range"]::-webkit-slider-thumb { width:24px; height:24px; background:var(--primary); border-radius:50%; cursor:pointer; }
-.calc-value { font-size:32px; font-weight:900; color:var(--primary); margin-top:4px; }
-.calc-results { background:#1e293b; border:3px solid var(--primary); border-radius:16px; padding:40px; text-align:center; }
-.calc-result-label { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#94a3b8; margin-bottom:8px; }
-.calc-result-value { font-size:56px; font-weight:900; color:#fff; margin-bottom:24px; line-height:1; }
-.calc-savings { font-size:18px; color:var(--accent); font-weight:700; margin-bottom:24px; }
-.calc-cta { margin-top:24px; }
-
-/* INDUSTRY TABS */
-.industries-section { padding:80px 24px; }
-.industries-container { max-width:1200px; margin:0 auto; }
-.section-title { font-size:40px; font-weight:900; text-align:center; margin-bottom:16px; letter-spacing:-1px; }
-.section-subtitle { font-size:18px; color:var(--gray); text-align:center; margin-bottom:48px; }
-.industry-tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-.industry-tab { padding:12px 24px; border:2px solid #e2e8f0; border-radius:8px; background:#fff; font-size:15px; font-weight:700; cursor:pointer; transition:all .2s; }
-.industry-tab.active { background:#000; color:#fff; border-color:#000; }
-.industry-tab:hover { border-color:#000; }
-.industry-content { display:none; }
-.industry-content.active { display:block; }
-.automation-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px; }
-.automation-card { background:#f8fafc; border:3px solid #000; border-radius:12px; padding:24px; transition:transform .2s; }
-.automation-card:hover { transform:translateY(-4px); }
-.automation-card h3 { font-size:18px; font-weight:900; margin-bottom:12px; }
-.automation-card p { color:var(--gray); font-size:15px; }
-
-/* BEFORE/AFTER */
-.before-after-section { background:#f8fafc; padding:80px 24px; }
-.before-after-container { max-width:1100px; margin:0 auto; }
-.comparison-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:48px; }
-.comparison-card { padding:40px; border-radius:16px; position:relative; }
-.comparison-card.before { background:#fff; border:3px solid #ef4444; }
-.comparison-card.after { background:#000; color:#fff; border:3px solid var(--accent); }
-.comparison-badge { position:absolute; top:-16px; left:24px; padding:6px 16px; border-radius:20px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; }
-.comparison-badge.before { background:#ef4444; color:#fff; }
-.comparison-badge.after { background:var(--accent); color:#fff; }
-.comparison-card h3 { font-size:28px; font-weight:900; margin-bottom:24px; }
-.comparison-list { list-style:none; }
-.comparison-list li { padding:12px 0; font-size:16px; display:flex; align-items:start; gap:12px; }
-.comparison-list li::before { content:''; width:24px; height:24px; border-radius:50%; flex-shrink:0; margin-top:2px; }
-.before .comparison-list li::before { background:#ef4444; }
-.after .comparison-list li::before { background:var(--accent); }
-.comparison-big { font-size:48px; font-weight:900; margin-top:24px; }
-.comparison-big.before { color:#ef4444; }
-.comparison-big.after { color:var(--accent); }
-
-/* MICRO-COMMITMENT CTA */
-.micro-cta-section { background:var(--primary); color:#fff; padding:80px 24px; text-align:center; }
-.micro-cta-container { max-width:700px; margin:0 auto; }
-.micro-cta-section h2 { font-size:40px; font-weight:900; margin-bottom:16px; letter-spacing:-1px; }
-.micro-cta-section p { font-size:18px; margin-bottom:32px; opacity:0.9; }
-
-/* FOOTER */
-footer { background:#000; color:#94a3b8; padding:48px 24px; text-align:center; font-size:14px; }
-.footer-content { max-width:1200px; margin:0 auto; }
-.footer-bio { margin-bottom:32px; }
-.footer-bio img { width:80px; height:80px; border-radius:50%; border:3px solid #fff; margin-bottom:16px; }
-.footer-bio h4 { color:#fff; font-size:18px; font-weight:900; margin-bottom:8px; }
-.footer-bio p { font-size:15px; line-height:1.6; max-width:600px; margin:0 auto; }
-
-@media (max-width:768px) {
-  .hero h1 { font-size:36px; }
-  .calc-grid, .comparison-grid { grid-template-columns:1fr; }
-  .industry-tabs { flex-direction:column; }
-  .nav-links { display:none; }
+@media(max-width:600px){
+  .metrics{grid-template-columns:1fr}
+  .metric{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .metric:last-child{border-bottom:none}
 }
 </style>
+<!-- TODO: Replace GA_MEASUREMENT_ID with real ID from analytics.google.com -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- TODO: Replace CLARITY_PROJECT_ID with real ID from clarity.microsoft.com -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','CLARITY_PROJECT_ID');</script>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="logo">Zach<span>AI</span></a>
-    <div class="nav-links">
-      <a href="#calculator">Calculator</a>
-      <a href="#industries">Industries</a>
-      <a href="#before-after">Results</a>
-      <a href="/audit.html" class="btn btn-primary" style="color:#fff !important;">Get Free Audit</a>
-    </div>
-  </div>
+  <div class="logo">NexusAI <span>by Zach Aronwald</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#audit" class="cta-nav">Start a project</a>
 </nav>
 
-<div class="hero">
-  <h1>I Build <span class="highlight">AI That Handles the Boring Stuff</span></h1>
-  <p class="intro">Hi, I'm Zach. I build custom AI automation for small businesses — the kind that actually saves you 10-20 hours per week. No templates, no BS, just systems that work.</p>
-  
-  <div class="cta-row">
-    <a href="/audit.html" class="btn btn-primary" style="font-size:18px;padding:16px 36px;">Get Your Free AI Audit →</a>
-    <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" class="btn btn-outline" style="font-size:18px;padding:16px 36px;">Book a 15-Min Call</a>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">AI Automation</div>
+    <h1>Less busywork.<br><span class="thin">More</span> business.</h1>
   </div>
+  <div class="hero-right">
+    <p>I build custom AI systems that handle the repetitive work draining your team's time. Designed around your workflow. Deployed in weeks. Pays for itself in one month.</p>
+    <div class="hero-ctas">
+      <a href="#audit" class="btn-line">Get your free automation audit <span class="arrow">→</span></a>
+      <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" target="_blank" class="btn-line muted">Book a 15-min call <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
 
-  <div class="chatbot-preview">
-    <div class="chat-header">👇 Try the AI Assistant</div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="chat-bubble bot">What's your biggest time-waster right now?</div>
-    </div>
-    <div class="chat-options" id="chatOptions">
-      <div class="chat-option" onclick="handleChatOption('email')">📧 Responding to customer emails</div>
-      <div class="chat-option" onclick="handleChatOption('scheduling')">📅 Scheduling appointments</div>
-      <div class="chat-option" onclick="handleChatOption('data')">📊 Data entry and reporting</div>
-      <div class="chat-option" onclick="handleChatOption('follow')">🔁 Following up with leads</div>
-    </div>
+<div class="scroll-text">
+  <div class="scroll-inner">
+    <span>Customer Response</span><span>·</span>
+    <span>Review Management</span><span>·</span>
+    <span>Lead Follow-Up</span><span>·</span>
+    <span>Scheduling</span><span>·</span>
+    <span>Data Entry</span><span>·</span>
+    <span>Reporting</span><span>·</span>
+    <span>Inventory</span><span>·</span>
+    <span>Customer Response</span><span>·</span>
+    <span>Review Management</span><span>·</span>
+    <span>Lead Follow-Up</span><span>·</span>
+    <span>Scheduling</span><span>·</span>
+    <span>Data Entry</span><span>·</span>
+    <span>Reporting</span><span>·</span>
+    <span>Inventory</span>
   </div>
 </div>
 
-<section id="calculator" class="calculator-section">
-  <div class="calculator-container">
-    <h2 class="calc-title">What's Manual Work Costing You?</h2>
+<section class="bento" id="services">
+  <div class="bento-header">
+    <h2>What gets automated</h2>
+    <p>Every system is custom. These are the most common problems I solve.</p>
+  </div>
+  <div class="bento-grid">
+    <div class="bento-card span-8">
+      <div class="card-label">01</div>
+      <div>
+        <h3>Customer inquiries on autopilot</h3>
+        <p>AI responds to questions, books appointments, and follows up — in your tone, 24/7. Your customers get instant answers. You get your evenings back.</p>
+      </div>
+    </div>
+    <div class="bento-card span-4">
+      <div class="card-label">02</div>
+      <div>
+        <h3>Reviews that manage themselves</h3>
+        <p>Automatic responses to Google and Yelp reviews. Negative ones get handled with care. Positive ones get amplified.</p>
+      </div>
+    </div>
+    <div class="bento-card span-4">
+      <div class="card-label">03</div>
+      <div>
+        <h3>Zero leads lost</h3>
+        <p>Automated follow-up sequences that nurture every lead until they convert or opt out.</p>
+      </div>
+    </div>
+    <div class="bento-card span-4">
+      <div class="card-label">04</div>
+      <div>
+        <h3>Self-booking calendar</h3>
+        <p>Appointments schedule themselves. Reminders go out automatically. No-shows get re-engaged.</p>
+      </div>
+    </div>
+    <div class="bento-card span-4">
+      <div class="card-label">05</div>
+      <div>
+        <h3>Reports that write themselves</h3>
+        <p>Daily, weekly, monthly — your data compiled, analyzed, and delivered without lifting a finger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section class="calc-section" id="calculator">
+  <div class="calc-inner">
+    <h2>What's manual work costing you?</h2>
     <div class="calc-grid">
       <div class="calc-inputs">
         <div class="calc-group">
           <label>Your Industry</label>
           <select id="calcIndustry" onchange="updateCalculator()">
-            <option value="25">Restaurant / Food Service ($25/hr avg)</option>
-            <option value="35" selected>Retail / Professional Services ($35/hr avg)</option>
-            <option value="50">Healthcare / Legal ($50/hr avg)</option>
-            <option value="75">Real Estate / Finance ($75/hr avg)</option>
+            <option value="25">Restaurant / Food Service — $25/hr avg</option>
+            <option value="35" selected>Retail / Professional Services — $35/hr avg</option>
+            <option value="50">Healthcare / Legal — $50/hr avg</option>
+            <option value="75">Real Estate / Finance — $75/hr avg</option>
           </select>
         </div>
         <div class="calc-group">
@@ -184,265 +289,186 @@ footer { background:#000; color:#94a3b8; padding:48px 24px; text-align:center; f
         <div class="calc-group">
           <label>Automation Can Save</label>
           <input type="range" id="calcSavings" min="50" max="90" value="70" step="5" oninput="updateCalculator()">
-          <div class="calc-value"><span id="savingsValue">70</span>% of that time</div>
+          <div class="calc-value"><span id="savingsValue">70</span>%</div>
         </div>
       </div>
       <div class="calc-results">
         <div class="calc-result-label">You're Losing Per Year</div>
         <div class="calc-result-value" id="costResult">$27,300</div>
         <div class="calc-savings" id="savingsResult">Save $19,110/year with automation</div>
-        <p style="font-size:15px;color:#94a3b8;">That's <span id="roiMonths" style="color:#fff;font-weight:700;">1-2 months</span> to pay for itself</p>
-        <div class="calc-cta">
-          <a href="/audit.html" class="btn btn-primary" style="font-size:16px;">Get My Custom Audit →</a>
-        </div>
+        <div class="calc-roi">That's <strong id="roiMonths">1 month</strong> to pay for itself</div>
+        <div class="calc-cta"><a href="#audit">Get My Custom Audit →</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="industries" class="industries-section">
-  <div class="industries-container">
-    <h2 class="section-title">What Can AI Automate for You?</h2>
-    <p class="section-subtitle">Every industry wastes time differently. Here's what I can automate for yours.</p>
-    
-    <div class="industry-tabs">
-      <div class="industry-tab active" onclick="showIndustry('restaurant')">🍽️ Restaurants</div>
-      <div class="industry-tab" onclick="showIndustry('dental')">🦷 Dental/Medical</div>
-      <div class="industry-tab" onclick="showIndustry('realestate')">🏠 Real Estate</div>
-      <div class="industry-tab" onclick="showIndustry('hvac')">🔧 HVAC/Contractors</div>
-      <div class="industry-tab" onclick="showIndustry('retail')">🛍️ Retail</div>
-    </div>
+<div class="metrics" id="results">
+  <div class="metric">
+    <div class="metric-num">80%</div>
+    <div class="metric-label">Less time on customer responses</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">15h</div>
+    <div class="metric-label">Saved per week on average</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">30d</div>
+    <div class="metric-label">To full return on investment</div>
+  </div>
+  <div class="metric">
+    <div class="metric-num">100%</div>
+    <div class="metric-label">Custom — zero templates</div>
+  </div>
+</div>
 
-    <div id="restaurant" class="industry-content active">
-      <div class="automation-grid">
-        <div class="automation-card">
-          <h3>Auto-Respond to Reservations</h3>
-          <p>AI confirms availability, books tables, sends reminders — no more missed reservations or back-and-forth.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Review Management</h3>
-          <p>Auto-reply to Google/Yelp reviews with personalized responses. Turn negative reviews into opportunities.</p>
-        </div>
-        <div class="automation-card">
-          <h3>No-Show Follow-Up</h3>
-          <p>Automatically reach out to no-shows, offer incentives to rebook, recover lost revenue.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Inventory Alerts</h3>
-          <p>Track stock levels, auto-order supplies when low, never run out of key ingredients again.</p>
-        </div>
-      </div>
-    </div>
+<section class="testimonial" id="about">
+  <blockquote>"The automation Zach built saved us 12 hours a week on reporting alone. It paid for itself in the first month."</blockquote>
+  <cite>— Adam Dayan, CEO & Founder, Consumer Law Group</cite>
+</section>
 
-    <div id="dental" class="industry-content">
-      <div class="automation-grid">
-        <div class="automation-card">
-          <h3>Appointment Reminders</h3>
-          <p>Automated SMS/email reminders sent 48hrs and 24hrs before appointments. Reduce no-shows by 40%.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Insurance Verification</h3>
-          <p>AI checks coverage, eligibility, and pre-authorizations automatically — no more hold times.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Patient Intake Forms</h3>
-          <p>Patients fill out forms online before arriving. Data flows directly into your system.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Recall Campaign Automation</h3>
-          <p>Auto-reach out to patients due for cleanings, follow-ups, or annual visits. Book more appointments.</p>
-        </div>
-      </div>
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-label">About</div>
+      <h2>Built by someone who gets small business</h2>
     </div>
-
-    <div id="realestate" class="industry-content">
-      <div class="automation-grid">
-        <div class="automation-card">
-          <h3>Lead Response in 60 Seconds</h3>
-          <p>AI replies to Zillow/Realtor leads instantly, qualifies them, books showings — before your competitors respond.</p>
-        </div>
-        <div class="automation-card">
-          <h3>CRM Auto-Updates</h3>
-          <p>Every call, email, showing gets logged automatically. No more manual data entry.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Follow-Up Sequences</h3>
-          <p>Automated drip campaigns for buyers, sellers, and past clients. Stay top-of-mind without lifting a finger.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Transaction Coordination</h3>
-          <p>Track deadlines, send reminders, coordinate with lenders/inspectors — all automated.</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="hvac" class="industry-content">
-      <div class="automation-grid">
-        <div class="automation-card">
-          <h3>Service Call Scheduling</h3>
-          <p>Customers text or call, AI books the next available tech, sends confirmation — zero admin work.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Seasonal Maintenance Reminders</h3>
-          <p>Auto-reach out to customers when it's time for furnace/AC checkups. Book 30% more maintenance.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Quote Generation</h3>
-          <p>AI creates estimates based on job type, square footage, equipment — sent in minutes, not days.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Review Requests</h3>
-          <p>After every job, auto-send Google review request. Build 5-star reputation on autopilot.</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="retail" class="industry-content">
-      <div class="automation-grid">
-        <div class="automation-card">
-          <h3>Order Status Updates</h3>
-          <p>Customers get automatic shipping updates, tracking info, delivery confirmations — no support tickets.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Abandoned Cart Recovery</h3>
-          <p>AI follows up with shoppers who left items in cart, offers incentives, recovers 15-25% of lost sales.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Inventory Sync</h3>
-          <p>Stock levels update across your website, Shopify, Amazon, social media — all automatically.</p>
-        </div>
-        <div class="automation-card">
-          <h3>Customer Support Chatbot</h3>
-          <p>Handle FAQs, returns, exchanges 24/7. Escalate complex issues to humans only when needed.</p>
-        </div>
-      </div>
+    <div class="about-right">
+      <p>I'm <strong>Zach Aronwald</strong>, the founder of NexusAI. I build AI automation systems for small businesses — the kind that actually work, not the kind that look impressive in a demo and fall apart in practice.</p>
+      <p>My approach is simple: figure out what's costing you time, build AI to handle it, and give you your life back. <strong>No corporate fluff. No overpriced retainers.</strong> Just practical systems that pay for themselves in weeks.</p>
+      <p>Every system I build is custom. Because your business isn't a template — and your automation shouldn't be either.</p>
     </div>
   </div>
 </section>
 
-<section id="before-after" class="before-after-section">
-  <div class="before-after-container">
-    <h2 class="section-title">Before vs After Automation</h2>
-    <p class="section-subtitle">Here's what changes when you stop doing things manually</p>
-    
-    <div class="comparison-grid">
-      <div class="comparison-card before">
-        <div class="comparison-badge before">Without AI</div>
-        <h3>Your Day Now</h3>
-        <ul class="comparison-list">
-          <li>3 hours manually responding to customer inquiries</li>
-          <li>1.5 hours scheduling appointments and confirmations</li>
-          <li>2 hours following up with leads</li>
-          <li>1 hour copying data between systems</li>
-          <li>30 mins creating reports</li>
-        </ul>
-        <div class="comparison-big before">8 hours/day</div>
-        <p style="margin-top:12px;color:#64748b;">on repetitive tasks</p>
+<section class="audit-section" id="audit">
+  <div class="audit-inner">
+    <div id="auditFormSection">
+      <h2>Get your free automation audit</h2>
+      <p>Tell me about your business and I'll send you a personalized report showing exactly where AI can save you time — plus a custom roadmap to implement it.</p>
+      <form class="audit-form" id="auditForm" onsubmit="submitAudit(event)">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <select name="industry" required>
+          <option value="">Select your industry...</option>
+          <option value="restaurant">Restaurant / Food Service</option>
+          <option value="retail">Retail / E-commerce</option>
+          <option value="healthcare">Healthcare / Medical</option>
+          <option value="professional">Professional Services (Law, Accounting)</option>
+          <option value="real_estate">Real Estate</option>
+          <option value="construction">Construction / Contracting</option>
+          <option value="fitness">Fitness / Wellness</option>
+          <option value="salon">Salon / Spa</option>
+          <option value="hvac">HVAC / Plumbing / Electrical</option>
+          <option value="other">Other</option>
+        </select>
+        <input type="hidden" name="utm_source" id="utm_source">
+        <input type="hidden" name="utm_medium" id="utm_medium">
+        <input type="hidden" name="utm_campaign" id="utm_campaign">
+        <input type="hidden" name="utm_content" id="utm_content">
+        <button type="submit" class="audit-submit">Get My Free Audit →</button>
+      </form>
+      <div class="audit-trust">
+        <span>✓ 100% free</span>
+        <span>✓ No credit card</span>
+        <span>✓ Personalized results</span>
       </div>
-
-      <div class="comparison-card after">
-        <div class="comparison-badge after">With AI</div>
-        <h3>Your Day After</h3>
-        <ul class="comparison-list">
-          <li>AI handles 80% of customer inquiries automatically</li>
-          <li>Appointments book themselves, confirmations sent</li>
-          <li>Leads get instant personalized follow-ups</li>
-          <li>Data syncs between systems in real-time</li>
-          <li>Reports generate and email themselves daily</li>
-        </ul>
-        <div class="comparison-big after">0 minutes/day</div>
-        <p style="margin-top:12px;color:#94a3b8;">AI does it all while you sleep</p>
+      <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);text-align:center">
+        <p style="font-size:14px;color:rgba(255,255,255,.35);margin-bottom:16px">Prefer to talk now?</p>
+        <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" target="_blank" style="color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:2px;transition:all .3s;letter-spacing:.3px">Book a free 15-minute call →</a>
       </div>
     </div>
-
-    <div style="text-align:center;margin-top:60px;">
-      <p style="font-size:22px;font-weight:700;margin-bottom:24px;">That's 40 hours per week back in your life</p>
-      <a href="/audit.html" class="btn btn-primary" style="font-size:18px;padding:16px 36px;">See What AI Can Do For You →</a>
+    <div class="audit-success" id="auditSuccess">
+      <h3>You're in ✓</h3>
+      <p>Your custom audit is on the way. Want to skip the wait and talk now?</p>
+      <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" target="_blank">Book a 15-Min Call →</a>
     </div>
-  </div>
-</section>
-
-<section class="micro-cta-section">
-  <div class="micro-cta-container">
-    <h2>Get Your Free AI Automation Audit</h2>
-    <p>Tell me about your business and I'll show you exactly where you're losing time — plus give you a custom roadmap to automate it.</p>
-    <a href="/audit.html" class="btn btn-outline" style="border-color:#fff;color:#fff;font-size:18px;padding:16px 36px;">Get My Free Audit →</a>
-    <p style="font-size:14px;margin-top:24px;opacity:0.8;">Takes 2 minutes • No credit card • Personalized results</p>
   </div>
 </section>
 
 <footer>
-  <div class="footer-content">
-    <div class="footer-bio">
-      <img src="/zach-headshot.jpg" alt="Zach Aronwald">
-      <h4>Zach Aronwald</h4>
-      <p>I've built AI automation systems for 50+ businesses across restaurants, healthcare, real estate, and more. My approach is simple: figure out what's wasting your time, build AI to handle it, and give you your life back. No corporate nonsense, no overpriced consulting — just practical automation that pays for itself in weeks.</p>
-    </div>
-    <p>&copy; 2026 Zach Aronwald. All rights reserved.</p>
+  <span>© 2026 NexusAI · Zach Aronwald</span>
+  <div style="display:flex;gap:24px">
+    <a href="https://twitter.com/GAronwald26589" target="_blank">Twitter</a>
+    <a href="mailto:zach@zachary-aronwald.com">Email</a>
+    <a href="https://calendly.com/zaronwald/ai-automation-strategy-call" target="_blank">Calendly</a>
   </div>
 </footer>
 
 <script>
-// CALCULATOR
+// UTM Capture - Read UTM params from URL and store in localStorage
+(function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmData = {
+    utm_source: urlParams.get('utm_source') || '',
+    utm_medium: urlParams.get('utm_medium') || '',
+    utm_campaign: urlParams.get('utm_campaign') || '',
+    utm_content: urlParams.get('utm_content') || ''
+  };
+  if (utmData.utm_source || utmData.utm_medium || utmData.utm_campaign || utmData.utm_content) {
+    localStorage.setItem('utm_data', JSON.stringify(utmData));
+  }
+})();
+
+// Calculator
 function updateCalculator() {
   const hourlyRate = parseInt(document.getElementById('calcIndustry').value);
   const hoursPerWeek = parseInt(document.getElementById('calcHours').value);
   const savingsPercent = parseInt(document.getElementById('calcSavings').value);
-  
   document.getElementById('hoursValue').textContent = hoursPerWeek;
   document.getElementById('savingsValue').textContent = savingsPercent;
-  
   const yearlyWaste = hourlyRate * hoursPerWeek * 52;
   const yearlySavings = yearlyWaste * (savingsPercent / 100);
-  
   document.getElementById('costResult').textContent = '$' + yearlyWaste.toLocaleString();
   document.getElementById('savingsResult').textContent = 'Save $' + yearlySavings.toLocaleString() + '/year with automation';
-  
   const monthsToROI = Math.ceil((997 * 12) / yearlySavings);
   document.getElementById('roiMonths').textContent = monthsToROI < 2 ? '1 month' : monthsToROI + ' months';
 }
 updateCalculator();
 
-// INDUSTRY TABS
-function showIndustry(industry) {
-  document.querySelectorAll('.industry-tab').forEach(tab => tab.classList.remove('active'));
-  document.querySelectorAll('.industry-content').forEach(content => content.classList.remove('active'));
-  
-  event.target.classList.add('active');
-  document.getElementById(industry).classList.add('active');
-}
+// Populate UTM fields on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const utmDataStr = localStorage.getItem('utm_data');
+  if (utmDataStr) {
+    try {
+      const utmData = JSON.parse(utmDataStr);
+      document.getElementById('utm_source').value = utmData.utm_source || '';
+      document.getElementById('utm_medium').value = utmData.utm_medium || '';
+      document.getElementById('utm_campaign').value = utmData.utm_campaign || '';
+      document.getElementById('utm_content').value = utmData.utm_content || '';
+    } catch(e) {}
+  }
+});
 
-// CHATBOT
-const chatResponses = {
-  email: "I'd build you an AI that reads incoming emails, drafts responses based on your business knowledge, and either auto-sends or queues for your review. You'd go from 3 hours/day to 15 minutes. Want to see how?",
-  scheduling: "I'd set up an AI scheduler that reads availability from your calendar, books appointments, sends confirmations, and reschedules when needed. Completely hands-free. Want a custom demo?",
-  data: "I'd create automation that pulls data from your tools, formats it, updates your CRM/spreadsheets, and generates reports — all while you sleep. No more copy-paste. Interested?",
-  follow: "I'd build an AI that tracks leads, sends personalized follow-ups based on their behavior, and books calls automatically. Your leads get instant responses even at 2am. Sound good?"
-};
+// Audit form
+async function submitAudit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
 
-function handleChatOption(type) {
-  const messagesDiv = document.getElementById('chatMessages');
-  const optionsDiv = document.getElementById('chatOptions');
-  
-  const userBubble = document.createElement('div');
-  userBubble.className = 'chat-bubble user';
-  userBubble.textContent = event.target.textContent;
-  messagesDiv.appendChild(userBubble);
-  
-  optionsDiv.style.display = 'none';
-  
-  setTimeout(() => {
-    const botBubble = document.createElement('div');
-    botBubble.className = 'chat-bubble bot';
-    botBubble.textContent = chatResponses[type];
-    messagesDiv.appendChild(botBubble);
-    
-    setTimeout(() => {
-      const ctaButton = document.createElement('div');
-      ctaButton.innerHTML = '<a href="/audit.html" class="btn btn-primary" style="display:inline-block;margin-top:12px;">Yes, Show Me How →</a>';
-      messagesDiv.appendChild(ctaButton);
-    }, 800);
-  }, 600);
+  // Fire GA4 event
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'audit_form_submit', {
+      utm_source: data.utm_source || '',
+      utm_medium: data.utm_medium || '',
+      utm_campaign: data.utm_campaign || ''
+    });
+  }
+
+  // Send via SendGrid (TODO: Move API key to backend endpoint)
+  try {
+    const resp = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer SENDGRID_API_KEY_HERE' },
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email: 'zaronwald@gmail.com' }], subject: 'New Audit Request: ' + data.name + ' (' + data.industry + ')' }],
+        from: { email: 'zach@zachary-aronwald.com', name: 'ZachAI Website' },
+        content: [{ type: 'text/plain', value: 'Name: ' + data.name + '\nEmail: ' + data.email + '\nIndustry: ' + data.industry + '\nUTM Source: ' + (data.utm_source || 'N/A') + '\nUTM Medium: ' + (data.utm_medium || 'N/A') + '\nUTM Campaign: ' + (data.utm_campaign || 'N/A') + '\nUTM Content: ' + (data.utm_content || 'N/A') + '\n\nSubmitted from ai.zachary-aronwald.com' }]
+      })
+    });
+  } catch(err) { /* still show success */ }
+  document.getElementById('auditFormSection').style.display = 'none';
+  document.getElementById('auditSuccess').classList.add('active');
 }
 </script>
 

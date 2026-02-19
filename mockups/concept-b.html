@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept B - Warm Minimal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#faf9f7;color:#1a1a1a;overflow-x:hidden}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 64px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(250,249,247,.85)}
+nav .logo{font-family:'DM Serif Display',serif;font-size:26px;color:#1a1a1a}
+nav ul{list-style:none;display:flex;gap:36px}
+nav ul li a{color:#78716c;font-size:14px;font-weight:400;text-decoration:none;transition:color .3s}
+nav ul li a:hover{color:#1a1a1a}
+nav .cta-nav{padding:10px 28px;border-radius:8px;background:#1a1a1a;color:#faf9f7;font-size:13px;font-weight:500;text-decoration:none;transition:all .3s}
+nav .cta-nav:hover{background:#2d2d2d}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 64px 100px;max-width:1200px;margin:0 auto;position:relative}
+.hero-eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:4px;color:#a8a29e;margin-bottom:32px;font-weight:500}
+.hero h1{font-family:'DM Serif Display',serif;font-size:80px;line-height:1.05;letter-spacing:-3px;margin-bottom:32px;max-width:900px}
+.hero h1 .accent{color:#d97706;font-style:italic}
+.hero p{font-size:19px;color:#78716c;line-height:1.8;max-width:520px;margin-bottom:48px;font-weight:300}
+.hero-ctas{display:flex;gap:16px;align-items:center}
+.btn-dark{padding:18px 44px;border-radius:8px;background:#1a1a1a;color:#faf9f7;font-size:15px;font-weight:500;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-dark:hover{background:#2d2d2d;transform:translateY(-1px)}
+.btn-ghost{padding:18px 44px;color:#78716c;font-size:15px;font-weight:400;text-decoration:none;transition:color .3s}
+.btn-ghost:hover{color:#1a1a1a}
+.hero-line{position:absolute;right:64px;top:50%;transform:translateY(-50%);width:1px;height:200px;background:linear-gradient(to bottom,transparent,#d6d3d1,transparent)}
+
+/* Divider */
+.divider{width:100%;height:1px;background:#e7e5e4;margin:0}
+
+/* Process Section */
+.process{padding:120px 64px;max-width:1200px;margin:0 auto}
+.process-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:80px}
+.process-header h2{font-family:'DM Serif Display',serif;font-size:52px;letter-spacing:-2px;max-width:500px;line-height:1.1}
+.process-header p{font-size:15px;color:#78716c;max-width:360px;line-height:1.7;text-align:right}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.step{position:relative;padding-top:48px}
+.step::before{content:'';position:absolute;top:0;left:0;width:40px;height:1px;background:#d97706}
+.step-num{font-size:12px;letter-spacing:3px;color:#a8a29e;text-transform:uppercase;margin-bottom:16px;font-weight:500}
+.step h3{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:12px;letter-spacing:-0.5px}
+.step p{font-size:14px;color:#78716c;line-height:1.8}
+
+/* Marquee */
+.marquee-wrap{padding:80px 0;overflow:hidden;border-top:1px solid #e7e5e4;border-bottom:1px solid #e7e5e4}
+.marquee{display:flex;gap:64px;animation:scroll 20s linear infinite;white-space:nowrap}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee span{font-family:'DM Serif Display',serif;font-size:48px;color:#e7e5e4;letter-spacing:-1px}
+.marquee span.filled{color:#1a1a1a}
+
+/* Results */
+.results{padding:120px 64px;background:#1a1a1a;color:#faf9f7}
+.results-inner{max-width:1200px;margin:0 auto}
+.results-header{margin-bottom:80px}
+.results-header h2{font-family:'DM Serif Display',serif;font-size:52px;letter-spacing:-2px;margin-bottom:16px}
+.results-header p{font-size:15px;color:#a8a29e;font-weight:300}
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
+.result{text-align:left}
+.result-num{font-family:'DM Serif Display',serif;font-size:56px;color:#d97706;letter-spacing:-2px;line-height:1}
+.result-label{font-size:14px;color:#a8a29e;margin-top:12px;line-height:1.5}
+
+/* About */
+.about{padding:120px 64px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text .label{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:#a8a29e;margin-bottom:16px;font-weight:500}
+.about-text h2{font-family:'DM Serif Display',serif;font-size:44px;letter-spacing:-1.5px;margin-bottom:20px;line-height:1.15}
+.about-text p{font-size:15px;color:#78716c;line-height:1.8;margin-bottom:16px}
+.about-img{background:#e7e5e4;border-radius:16px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-size:14px;color:#a8a29e}
+
+/* CTA */
+.cta-section{padding:120px 64px;text-align:center;background:#faf9f7;position:relative}
+.cta-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:400px;height:1px;background:linear-gradient(to right,transparent,#d6d3d1,transparent)}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:56px;letter-spacing:-2px;margin-bottom:16px}
+.cta-section .accent{color:#d97706}
+.cta-section p{font-size:16px;color:#78716c;margin-bottom:40px;font-weight:300}
+
+/* Footer */
+footer{padding:48px 64px;text-align:center;font-size:13px;color:#a8a29e;border-top:1px solid #e7e5e4}
+</style>
+<!-- TODO: Replace GA_MEASUREMENT_ID with real ID from analytics.google.com -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- TODO: Replace CLARITY_PROJECT_ID with real ID from clarity.microsoft.com -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','CLARITY_PROJECT_ID');</script>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Zach Aronwald</div>
+  <ul>
+    <li><a href="#">Process</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Results</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="#" class="cta-nav">Get Your Audit</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">AI Automation Consultant</div>
+  <h1>I eliminate the work <span class="accent">you shouldn't be doing</span></h1>
+  <p>Custom AI systems for small businesses. No templates, no fluff — just automation that gives you back 10–20 hours a week and pays for itself in 30 days.</p>
+  <div class="hero-ctas">
+    <a href="#" class="btn-dark">Get Your Free Audit <span>→</span></a>
+    <a href="#" class="btn-ghost">How It Works</a>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<div class="divider"></div>
+
+<section class="process">
+  <div class="process-header">
+    <h2>Simple process, serious results</h2>
+    <p>From first call to full automation in under 4 weeks. No disruption to your business.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01 — Audit</div>
+      <h3>I study your workflow</h3>
+      <p>A free 15-minute call where I map out exactly which tasks are eating your time and how much they're costing you.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02 — Design</div>
+      <h3>Custom system built</h3>
+      <p>I design and build automation tailored to your exact processes. No cookie-cutter solutions. Everything fits your business.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03 — Deploy</div>
+      <h3>Watch it work</h3>
+      <p>Your system goes live. I handle onboarding, training, and ongoing support. You start saving time immediately.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="filled">Restaurants</span>
+    <span>·</span>
+    <span>Dental</span>
+    <span>·</span>
+    <span class="filled">Real Estate</span>
+    <span>·</span>
+    <span>Law Firms</span>
+    <span>·</span>
+    <span class="filled">HVAC</span>
+    <span>·</span>
+    <span>Salons</span>
+    <span>·</span>
+    <span class="filled">Restaurants</span>
+    <span>·</span>
+    <span>Dental</span>
+    <span>·</span>
+    <span class="filled">Real Estate</span>
+    <span>·</span>
+    <span>Law Firms</span>
+    <span>·</span>
+    <span class="filled">HVAC</span>
+    <span>·</span>
+    <span>Salons</span>
+  </div>
+</div>
+
+<section class="results">
+  <div class="results-inner">
+    <div class="results-header">
+      <h2>The numbers speak</h2>
+      <p>What happens when you stop doing work a machine should handle.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result">
+        <div class="result-num">80%</div>
+        <div class="result-label">Reduction in manual customer response time</div>
+      </div>
+      <div class="result">
+        <div class="result-num">15h</div>
+        <div class="result-label">Average hours saved per week per client</div>
+      </div>
+      <div class="result">
+        <div class="result-num">30d</div>
+        <div class="result-label">Average time to full return on investment</div>
+      </div>
+      <div class="result">
+        <div class="result-num">0</div>
+        <div class="result-label">Templates used — everything custom-built</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-text">
+    <div class="label">About</div>
+    <h2>Automation built by someone who gets it</h2>
+    <p>I'm Zach. I build AI automation systems for small businesses — the kind that actually work, not the kind that look good in a demo and break in real life.</p>
+    <p>My approach is simple: figure out what's wasting your time, build AI to handle it, and give you your life back. No corporate nonsense, no overpriced consulting — just practical automation that pays for itself in weeks.</p>
+  </div>
+  <div class="about-img">[ Photo ]</div>
+</section>
+
+<section class="cta-section">
+  <h2>Let's get you <span class="accent">unstuck</span></h2>
+  <p>15 minutes. Free audit. Custom roadmap. No strings.</p>
+  <a href="#" class="btn-dark">Book Your Free Call →</a>
+</section>
+
+<footer>
+  © 2026 Zach Aronwald. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusAI — Discovery Questionnaire</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.6}
+.container{max-width:680px;margin:0 auto;padding:40px 20px}
+.logo{text-align:center;margin-bottom:40px}
+.logo h1{font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px}
+.logo h1 span{color:#6366f1}
+.logo p{color:#888;font-size:14px;margin-top:8px}
+.section{background:#141414;border:1px solid #222;border-radius:12px;padding:28px;margin-bottom:24px}
+.section h2{font-size:18px;font-weight:600;color:#fff;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #222}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:14px;font-weight:500;color:#ccc;margin-bottom:8px}
+.field label .req{color:#6366f1}
+input[type="text"],input[type="email"],input[type="url"],input[type="number"],textarea,select{width:100%;padding:12px 14px;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:14px;font-family:inherit;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#6366f1}
+textarea{resize:vertical;min-height:80px}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.check-item{display:flex;align-items:center;gap:8px;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:13px;transition:border-color .2s}
+.check-item:hover{border-color:#6366f1}
+.check-item input{accent-color:#6366f1}
+.radio-group{display:flex;flex-direction:column;gap:8px}
+.radio-item{display:flex;align-items:center;gap:10px;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:10px 14px;cursor:pointer;font-size:14px;transition:border-color .2s}
+.radio-item:hover{border-color:#6366f1}
+.radio-item input{accent-color:#6366f1}
+.spend-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.spend-row label{margin:0;min-width:180px;font-size:13px}
+.spend-row input{width:100px}
+button[type="submit"]{width:100%;padding:14px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s}
+button[type="submit"]:hover{background:#4f46e5}
+button[type="submit"]:disabled{opacity:.5;cursor:not-allowed}
+.success{text-align:center;padding:60px 20px}
+.success h2{font-size:24px;color:#fff;margin-bottom:12px}
+.success p{color:#888;font-size:15px}
+.success .check-icon{font-size:48px;margin-bottom:16px}
+#formView,#successView{transition:opacity .3s}
+.hidden{display:none}
+</style>
+<!-- TODO: Replace GA_MEASUREMENT_ID with real ID from analytics.google.com -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- TODO: Replace CLARITY_PROJECT_ID with real ID from clarity.microsoft.com -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','CLARITY_PROJECT_ID');</script>
+</head>
+<body>
+<div class="container">
+<div class="logo">
+<h1>Nexus<span>AI</span></h1>
+<p>AI Automation Discovery Questionnaire</p>
+</div>
+
+<div id="formView">
+<form id="questForm">
+
+<div class="section">
+<h2>1. About Your Business</h2>
+<div class="field"><label>Business Name <span class="req">*</span></label><input type="text" name="business_name" required></div>
+<div class="field"><label>Your Name & Role <span class="req">*</span></label><input type="text" name="contact_name" required></div>
+<div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required></div>
+<div class="field"><label>Industry / Niche <span class="req">*</span></label><input type="text" name="industry" required></div>
+<div class="field"><label>Website URL</label><input type="url" name="website" placeholder="https://"></div>
+<div class="field"><label>How long have you been in business? <span class="req">*</span></label>
+<select name="years_in_business" required><option value="">Select...</option><option>Less than 1 year</option><option>1-3 years</option><option>3-5 years</option><option>5-10 years</option><option>10+ years</option></select></div>
+<div class="field"><label>How many employees (including yourself)? <span class="req">*</span></label>
+<select name="employees" required><option value="">Select...</option><option>Just me (solopreneur)</option><option>2-5</option><option>6-15</option><option>16-50</option><option>50+</option></select></div>
+<div class="field"><label>Approximate monthly revenue <span class="req">*</span></label>
+<select name="revenue" required><option value="">Select...</option><option>Under $10K</option><option>$10K - $25K</option><option>$25K - $50K</option><option>$50K - $100K</option><option>$100K - $250K</option><option>$250K+</option></select></div>
+<div class="field"><label>Biggest bottlenecks right now (pick up to 3)</label>
+<div class="checks">
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Getting new leads/customers">Getting new leads</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Following up with leads">Following up with leads</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Onboarding new clients">Onboarding clients</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Day-to-day operations">Day-to-day operations</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Customer support">Customer support</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Scheduling & appointments">Scheduling</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Invoicing & payments">Invoicing & payments</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Social media & marketing">Social media & marketing</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Data entry & admin">Data entry & admin</label>
+<label class="check-item"><input type="checkbox" name="bottlenecks" value="Hiring/managing staff">Hiring/managing staff</label>
+</div></div>
+</div>
+
+<div class="section">
+<h2>2. Current Systems & Tools</h2>
+<div class="field"><label>How do you currently get new customers? (select all)</label>
+<div class="checks">
+<label class="check-item"><input type="checkbox" name="acquisition" value="Word of mouth/referrals">Word of mouth</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Google/SEO">Google/SEO</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Social media (organic)">Social media</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Paid ads">Paid ads</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Cold outreach">Cold outreach</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Walk-ins/local traffic">Walk-ins</label>
+<label class="check-item"><input type="checkbox" name="acquisition" value="Online marketplace">Online marketplace</label>
+</div></div>
+<div class="field"><label>What tools/software do you currently use? (select all)</label>
+<div class="checks">
+<label class="check-item"><input type="checkbox" name="tools" value="CRM">CRM</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Email marketing">Email marketing</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Scheduling tool">Scheduling tool</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Accounting software">Accounting</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Project management">Project mgmt</label>
+<label class="check-item"><input type="checkbox" name="tools" value="POS system">POS system</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Chatbot/live chat">Chatbot/live chat</label>
+<label class="check-item"><input type="checkbox" name="tools" value="Social media scheduler">Social scheduler</label>
+<label class="check-item"><input type="checkbox" name="tools" value="None / pen & paper">None / pen & paper</label>
+</div></div>
+<div class="field"><label>Which specific tools? (e.g. HubSpot, QuickBooks, Calendly)</label><input type="text" name="tools_specific" placeholder="List the tools you use..."></div>
+<div class="field"><label>How do you handle customer inquiries? <span class="req">*</span></label>
+<select name="inquiry_handling" required><option value="">Select...</option><option>I handle everything personally</option><option>Dedicated receptionist/admin</option><option>Team members share the load</option><option>Voicemail + call back later</option><option>Automated system (chatbot, IVR, etc.)</option><option>A lot slip through the cracks</option></select></div>
+<div class="field"><label>What does your follow-up process look like? <span class="req">*</span></label>
+<select name="followup_process" required><option value="">Select...</option><option>I follow up manually (call/email/text)</option><option>Automated email/text sequence</option><option>CRM reminders</option><option>I don't really have a follow-up system</option></select></div>
+<div class="field"><label>How do you handle appointment scheduling?</label>
+<select name="scheduling"><option value="">Select...</option><option>Phone calls back and forth</option><option>Online booking tool</option><option>Email/text coordination</option><option>Walk-ins only</option></select></div>
+</div>
+
+<div class="section">
+<h2>3. Time & Money</h2>
+<div class="field"><label>Hours per week YOU spend on admin/repetitive tasks <span class="req">*</span></label>
+<select name="admin_hours" required><option value="">Select...</option><option>Under 5 hours</option><option>5-10 hours</option><option>10-20 hours</option><option>20+ hours</option></select></div>
+<div class="field"><label>How many leads/inquiries per month (roughly)?</label>
+<select name="monthly_leads"><option value="">Select...</option><option>Under 10</option><option>10-30</option><option>30-75</option><option>75-150</option><option>150+</option></select></div>
+<div class="field"><label>What % of leads convert to paying customers?</label>
+<select name="conversion_rate"><option value="">Select...</option><option>Under 10%</option><option>10-25%</option><option>25-50%</option><option>50%+</option><option>I don't track this</option></select></div>
+<div class="field"><label>Current monthly spend on these (approximate):</label>
+<div class="spend-row"><label>Virtual assistant / admin</label><input type="text" name="spend_va" placeholder="$___/mo"></div>
+<div class="spend-row"><label>Marketing agency</label><input type="text" name="spend_marketing" placeholder="$___/mo"></div>
+<div class="spend-row"><label>Paid advertising</label><input type="text" name="spend_ads" placeholder="$___/mo"></div>
+<div class="spend-row"><label>Software/SaaS</label><input type="text" name="spend_saas" placeholder="$___/mo"></div>
+<div class="spend-row"><label>Answering service</label><input type="text" name="spend_answering" placeholder="$___/mo"></div>
+</div>
+<div class="field"><label>One task you wish you could completely hand off tomorrow?</label><textarea name="handoff_task" placeholder="What's eating up your time?"></textarea></div>
+</div>
+
+<div class="section">
+<h2>4. Goals & Budget</h2>
+<div class="field"><label>What would success look like in the next 90 days? <span class="req">*</span></label>
+<select name="success_goal" required><option value="">Select...</option><option>More leads coming in</option><option>Better conversion on existing leads</option><option>Less time on admin, more on revenue</option><option>Reduce payroll / replace a role with automation</option><option>Faster response times / better customer experience</option><option>Scale without hiring more people</option></select></div>
+<div class="field"><label>If we saved you 15-20 hrs/week or increased revenue 20-30%, what's that worth monthly?</label>
+<select name="value_perception"><option value="">Select...</option><option>Under $500/mo</option><option>$500 - $1,000/mo</option><option>$1,000 - $2,500/mo</option><option>$2,500 - $5,000/mo</option><option>$5,000+/mo</option><option>Not sure yet</option></select></div>
+<div class="field"><label>Budget for automation/AI solutions <span class="req">*</span></label>
+<select name="budget" required><option value="">Select...</option><option>Under $500/mo</option><option>$500 - $1,000/mo</option><option>$1,000 - $2,500/mo</option><option>$2,500+/mo</option><option>Need to see ROI first</option></select></div>
+<div class="field"><label>How soon are you looking to get started? <span class="req">*</span></label>
+<select name="timeline" required><option value="">Select...</option><option>Immediately — this is urgent</option><option>Within the next 2 weeks</option><option>Within the next month</option><option>Just exploring for now</option></select></div>
+<div class="field"><label>Anything else you want us to know?</label><textarea name="additional_notes" placeholder="Challenges, goals, context..."></textarea></div>
+</div>
+
+<button type="submit" id="submitBtn">Submit Questionnaire</button>
+</form>
+</div>
+
+<div id="successView" class="hidden">
+<div class="success">
+<div class="check-icon">✅</div>
+<h2>Thank you!</h2>
+<p>We've received your questionnaire. Our team will review your answers and put together a custom automation roadmap within 24 hours.</p>
+<p style="margin-top:20px"><a href="https://calendly.com/zaronwald/ai-automation-strategy-call" style="color:#6366f1;text-decoration:none;font-weight:600">Book your free strategy call →</a></p>
+</div>
+</div>
+
+</div>
+<script>
+document.getElementById('questForm').addEventListener('submit',async function(e){
+e.preventDefault();
+const btn=document.getElementById('submitBtn');
+btn.disabled=true;btn.textContent='Submitting...';
+const fd=new FormData(this);
+const data={};
+fd.forEach((v,k)=>{
+if(data[k]){
+if(!Array.isArray(data[k]))data[k]=[data[k]];
+data[k].push(v);
+}else data[k]=v;
+});
+try{
+const res=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+if(res.ok){
+document.getElementById('formView').classList.add('hidden');
+document.getElementById('successView').classList.remove('hidden');
+window.scrollTo(0,0);
+}else{
+btn.disabled=false;btn.textContent='Submit Questionnaire';
+alert('Something went wrong. Please try again.');
+}
+}catch(err){
+btn.disabled=false;btn.textContent='Submit Questionnaire';
+alert('Network error. Please try again.');
+}
+});
+</script>
+</body>
+</html>

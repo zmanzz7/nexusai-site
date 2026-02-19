@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept C3 - Noir Cinematic</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Geist',system-ui,sans-serif;background:#080808;color:#e8e8e8;overflow-x:hidden}
+::selection{background:rgba(255,255,255,.1)}
+
+/* Grain overlay */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 80px;height:72px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.03)}
+nav .logo{font-family:'Instrument Serif',serif;font-size:22px;color:#fff}
+nav .logo span{font-family:'Geist',sans-serif;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:3px;text-transform:uppercase;margin-left:12px;vertical-align:middle}
+nav .nav-center{display:flex;gap:1px;background:rgba(255,255,255,.04);border-radius:8px;overflow:hidden;padding:2px}
+nav .nav-center a{padding:8px 20px;font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;letter-spacing:.5px;border-radius:6px;transition:all .3s}
+nav .nav-center a:hover{color:#fff;background:rgba(255,255,255,.06)}
+nav .cta-nav{height:36px;padding:0 24px;display:flex;align-items:center;background:#fff;color:#080808;font-size:11px;font-weight:600;text-decoration:none;letter-spacing:1px;text-transform:uppercase;border-radius:6px;transition:all .3s}
+nav .cta-nav:hover{opacity:.9;transform:scale(1.02)}
+
+/* Hero — cinematic */
+.hero{height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-gradient{position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(255,255,255,.02) 0%,transparent 60%);pointer-events:none}
+.hero-grid-lines{position:absolute;inset:0;pointer-events:none}
+.hero-grid-lines .v{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.02)}
+.hero-grid-lines .v:nth-child(1){left:25%}
+.hero-grid-lines .v:nth-child(2){left:50%}
+.hero-grid-lines .v:nth-child(3){left:75%}
+.hero-inner{padding:0 80px;width:100%;position:relative;z-index:1}
+.hero-super{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.15);margin-bottom:40px;display:flex;align-items:center;gap:16px}
+.hero-super::before{content:'';width:32px;height:1px;background:rgba(255,255,255,.15)}
+.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(52px,7.5vw,108px);line-height:.9;letter-spacing:-4px;font-weight:400;margin-bottom:40px}
+.hero h1 .row{display:block}
+.hero h1 .ghost{-webkit-text-stroke:1px rgba(255,255,255,.12);color:transparent}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:60px}
+.hero-desc{max-width:380px}
+.hero-desc p{font-size:14px;color:rgba(255,255,255,.3);line-height:2;font-weight:300}
+.hero-cta-group{display:flex;gap:12px}
+.hero-btn{height:56px;padding:0 40px;display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.5px;text-decoration:none;transition:all .4s}
+.hero-btn.primary{background:#fff;color:#080808;font-weight:500;border-radius:8px}
+.hero-btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.1)}
+.hero-btn.ghost{color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);border-radius:8px}
+.hero-btn.ghost:hover{color:#fff;border-color:rgba(255,255,255,.2)}
+
+/* Ticker */
+.ticker{padding:24px 0;border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03);overflow:hidden;position:relative}
+.ticker::before,.ticker::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2}
+.ticker::before{left:0;background:linear-gradient(to right,#080808,transparent)}
+.ticker::after{right:0;background:linear-gradient(to left,#080808,transparent)}
+.ticker-track{display:flex;gap:48px;animation:tickerScroll 30s linear infinite;white-space:nowrap}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.12);letter-spacing:1px}
+.ticker-item .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.1)}
+
+/* Two-column feature */
+.feature-split{max-width:1400px;margin:0 auto;padding:160px 80px;display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative}
+.feature-split::before{content:'';position:absolute;top:160px;bottom:160px;left:50%;width:1px;background:rgba(255,255,255,.04)}
+.feature-left{padding-right:80px}
+.feature-right{padding-left:80px}
+.feature-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.1);margin-bottom:32px}
+.feature-left h2{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;letter-spacing:-1.5px;line-height:1.1;margin-bottom:24px}
+.feature-left>p{font-size:14px;color:rgba(255,255,255,.25);line-height:1.9}
+
+.feature-item{padding:32px 0;border-bottom:1px solid rgba(255,255,255,.03);cursor:default;transition:all .4s}
+.feature-item:first-child{border-top:1px solid rgba(255,255,255,.03)}
+.feature-item:hover{padding-left:12px}
+.feature-item h3{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;letter-spacing:-0.3px}
+.feature-item h3 .arrow{font-size:16px;color:rgba(255,255,255,.08);transition:all .4s;font-family:'Geist',sans-serif}
+.feature-item:hover h3 .arrow{color:rgba(255,255,255,.4);transform:translateX(4px)}
+.feature-item p{font-size:13px;color:rgba(255,255,255,.2);line-height:1.8;max-height:0;overflow:hidden;transition:all .5s}
+.feature-item:hover p{max-height:100px;margin-top:8px}
+
+/* Big numbers band */
+.numbers-band{padding:100px 80px;background:rgba(255,255,255,.015);border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03)}
+.numbers-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline}
+.number-block{text-align:center;flex:1}
+.number-block .big{font-family:'Instrument Serif',serif;font-size:clamp(48px,6vw,80px);font-weight:400;letter-spacing:-3px;line-height:1}
+.number-block .unit{font-size:clamp(24px,3vw,40px);color:rgba(255,255,255,.2);font-family:'Instrument Serif',serif}
+.number-block .desc{font-size:11px;color:rgba(255,255,255,.15);margin-top:12px;letter-spacing:1px;text-transform:uppercase}
+.number-sep{width:1px;height:80px;background:rgba(255,255,255,.04);flex-shrink:0}
+
+/* Process timeline */
+.timeline-section{padding:160px 80px;max-width:1400px;margin:0 auto}
+.timeline-header{text-align:center;margin-bottom:100px}
+.timeline-header h2{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;letter-spacing:-1.5px}
+.timeline{display:flex;position:relative;gap:0}
+.timeline::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
+.tl-step{flex:1;position:relative;padding:0 32px}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.12);margin-bottom:40px;position:relative;transition:all .4s}
+.tl-step:hover .tl-dot{background:#fff;box-shadow:0 0 20px rgba(255,255,255,.15)}
+.tl-step-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.1);margin-bottom:16px}
+.tl-step h3{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;letter-spacing:-0.5px;margin-bottom:12px}
+.tl-step p{font-size:13px;color:rgba(255,255,255,.2);line-height:1.9}
+
+/* CTA */
+.cta{padding:200px 80px;text-align:center;position:relative}
+.cta-line{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.08));margin:0 auto 64px}
+.cta h2{font-family:'Instrument Serif',serif;font-size:clamp(44px,5vw,68px);font-weight:400;letter-spacing:-2px;margin-bottom:16px;line-height:1.1}
+.cta h2 .outline{-webkit-text-stroke:1px rgba(255,255,255,.2);color:transparent}
+.cta>p{font-size:14px;color:rgba(255,255,255,.2);margin-bottom:48px;font-weight:300}
+.cta-main-btn{display:inline-flex;align-items:center;height:64px;padding:0 48px;background:#fff;color:#080808;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;border-radius:8px;transition:all .4s;gap:12px}
+.cta-main-btn:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,255,255,.12)}
+.cta-sub{margin-top:20px;font-size:12px;color:rgba(255,255,255,.12);letter-spacing:.5px}
+
+/* Footer */
+footer{padding:40px 80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.03)}
+footer .left{font-size:11px;color:rgba(255,255,255,.08);letter-spacing:1px;text-transform:uppercase}
+footer .right{display:flex;gap:24px}
+footer .right a{font-size:11px;color:rgba(255,255,255,.12);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color .3s}
+footer .right a:hover{color:rgba(255,255,255,.4)}
+
+@media(max-width:900px){
+  nav{padding:0 32px}
+  .hero-inner{padding:0 32px}
+  .hero h1{font-size:clamp(40px,10vw,64px)}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:32px}
+  .feature-split{grid-template-columns:1fr;padding:80px 32px}
+  .feature-split::before{display:none}
+  .feature-left{padding-right:0;margin-bottom:48px}
+  .feature-right{padding-left:0}
+  .numbers-inner{flex-direction:column;gap:48px;align-items:center}
+  .number-sep{width:80px;height:1px}
+  .timeline{flex-direction:column;gap:48px}
+  .timeline::before{display:none}
+  .tl-step{padding:0}
+  .cta,.timeline-section{padding-left:32px;padding-right:32px}
+  footer{padding:32px;flex-direction:column;gap:16px}
+}
+</style>
+<!-- TODO: Replace GA_MEASUREMENT_ID with real ID from analytics.google.com -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<!-- TODO: Replace CLARITY_PROJECT_ID with real ID from clarity.microsoft.com -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','CLARITY_PROJECT_ID');</script>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Zach Aronwald <span>AI Automation</span></div>
+  <div class="nav-center">
+    <a href="#">Services</a>
+    <a href="#">Process</a>
+    <a href="#">Results</a>
+    <a href="#">About</a>
+  </div>
+  <a href="#" class="cta-nav">Book a Call</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-grid-lines">
+    <div class="v"></div><div class="v"></div><div class="v"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-super"><span>AI Automation for Small Business</span></div>
+    <h1>
+      <span class="row">Stop doing work</span>
+      <span class="row ghost">a machine should handle.</span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-desc">
+        <p>I build custom AI systems that eliminate 10–20 hours of repetitive work per week. Designed for your business. Live in weeks. ROI in 30 days.</p>
+      </div>
+      <div class="hero-cta-group">
+        <a href="#" class="hero-btn primary">Get Free Audit →</a>
+        <a href="#" class="hero-btn ghost">Watch Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="dot"></span>Restaurants</span>
+    <span class="ticker-item"><span class="dot"></span>Dental Practices</span>
+    <span class="ticker-item"><span class="dot"></span>Real Estate</span>
+    <span class="ticker-item"><span class="dot"></span>Law Firms</span>
+    <span class="ticker-item"><span class="dot"></span>HVAC Companies</span>
+    <span class="ticker-item"><span class="dot"></span>Salons & Spas</span>
+    <span class="ticker-item"><span class="dot"></span>Gyms & Studios</span>
+    <span class="ticker-item"><span class="dot"></span>Auto Dealers</span>
+    <span class="ticker-item"><span class="dot"></span>Accounting Firms</span>
+    <span class="ticker-item"><span class="dot"></span>Veterinary Clinics</span>
+    <span class="ticker-item"><span class="dot"></span>Restaurants</span>
+    <span class="ticker-item"><span class="dot"></span>Dental Practices</span>
+    <span class="ticker-item"><span class="dot"></span>Real Estate</span>
+    <span class="ticker-item"><span class="dot"></span>Law Firms</span>
+    <span class="ticker-item"><span class="dot"></span>HVAC Companies</span>
+    <span class="ticker-item"><span class="dot"></span>Salons & Spas</span>
+    <span class="ticker-item"><span class="dot"></span>Gyms & Studios</span>
+    <span class="ticker-item"><span class="dot"></span>Auto Dealers</span>
+    <span class="ticker-item"><span class="dot"></span>Accounting Firms</span>
+    <span class="ticker-item"><span class="dot"></span>Veterinary Clinics</span>
+  </div>
+</div>
+
+<section class="feature-split">
+  <div class="feature-left">
+    <div class="feature-label">What I Automate</div>
+    <h2>Your workflow, minus the busywork</h2>
+    <p>Every system is custom-built around how your business actually works. Hover each service to learn more.</p>
+  </div>
+  <div class="feature-right">
+    <div class="feature-item">
+      <h3>Customer Response AI <span class="arrow">→</span></h3>
+      <p>Instant replies to inquiries, appointment booking, and follow-ups — 24/7, in your voice. Customers never wait again.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Review Autopilot <span class="arrow">→</span></h3>
+      <p>Smart responses to every Google and Yelp review. Negative? Handled with care. Positive? Amplified across channels.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Lead Nurture Engine <span class="arrow">→</span></h3>
+      <p>Automated follow-up sequences that turn cold leads warm and warm leads into paying customers. Zero leads slip through.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Smart Scheduling <span class="arrow">→</span></h3>
+      <p>Self-booking calendars, automatic reminders, and no-show re-engagement. Your calendar fills itself.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Automated Reporting <span class="arrow">→</span></h3>
+      <p>Business intelligence delivered to your inbox. Data pulled, compiled, and analyzed — no spreadsheet wrangling required.</p>
+    </div>
+  </div>
+</section>
+
+<div class="numbers-band">
+  <div class="numbers-inner">
+    <div class="number-block">
+      <div><span class="big">80</span><span class="unit">%</span></div>
+      <div class="desc">Less manual response time</div>
+    </div>
+    <div class="number-sep"></div>
+    <div class="number-block">
+      <div><span class="big">15</span><span class="unit">hrs</span></div>
+      <div class="desc">Saved per week average</div>
+    </div>
+    <div class="number-sep"></div>
+    <div class="number-block">
+      <div><span class="big">30</span><span class="unit">days</span></div>
+      <div class="desc">To full ROI</div>
+    </div>
+    <div class="number-sep"></div>
+    <div class="number-block">
+      <div><span class="big">100</span><span class="unit">%</span></div>
+      <div class="desc">Custom built</div>
+    </div>
+  </div>
+</div>
+
+<section class="timeline-section">
+  <div class="timeline-header">
+    <h2>How it works</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-dot"></div>
+      <div class="tl-step-label">Week 1</div>
+      <h3>The Audit</h3>
+      <p>Free 15-minute call. I map your entire workflow, identify the time sinks, and build a custom automation roadmap with exact ROI projections.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot"></div>
+      <div class="tl-step-label">Week 2–3</div>
+      <h3>The Build</h3>
+      <p>I design and develop your system from scratch. Every automation is tailored to your processes, your tools, and your team's needs.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot"></div>
+      <div class="tl-step-label">Week 4</div>
+      <h3>The Launch</h3>
+      <p>System goes live. Full onboarding for your team, documentation, and ongoing support. You start saving hours from day one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-line"></div>
+  <h2>Stop trading hours<br>for <span class="outline">busywork</span></h2>
+  <p>15 minutes. Free audit. Custom roadmap. No strings attached.</p>
+  <a href="#" class="cta-main-btn">Book Your Free Audit →</a>
+  <div class="cta-sub">Takes 2 minutes to book · No credit card · Personalized results</div>
+</section>
+
+<footer>
+  <div class="left">© 2026 Zach Aronwald</div>
+  <div class="right">
+    <a href="#">Twitter</a>
+    <a href="#">Email</a>
+    <a href="#">Calendly</a>
+  </div>
+</footer>
+
+</body>
+</html>
