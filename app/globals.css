@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-cream: #FAFAF8;
+    --color-beige: #F5F0E8;
+    --color-navy: #0F2240;
+    --color-amber: #D4920A;
+    --color-charcoal: #1A1A2E;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: #1A1A2E;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: #D4920A;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: #B87F09;
+  }
+
+  .eyebrow {
+    color: #D4920A;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  @media (min-width: 1024px) {
+    .h1 {
+      font-size: 4.5rem;
+    }
+  }
+
+  .h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  @media (min-width: 1024px) {
+    .h2 {
+      font-size: 3rem;
+    }
+  }
+
+  .card-shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Accordion animations */
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+.data-\[state\=open\]\:animate-accordion-down[data-state=open] {
+  animation: accordion-down 0.2s ease-out forwards;
+}
+.data-\[state\=closed\]\:animate-accordion-up[data-state=closed] {
+  animation: accordion-up 0.2s ease-out forwards;
+}
+
+/* Ensure accordion content is visible when open, hidden when closed */
+[data-slot="accordion-content"][data-state="closed"] {
+  display: none;
+}
+[data-slot="accordion-content"][data-state="open"] {
+  display: block;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amber);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B87F09;
+}
